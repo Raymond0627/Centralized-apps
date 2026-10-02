@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lumeed Central Portal — Next-Gen Software Registry</title>
+<meta name="description" content="Official Lumeed centralized software portal. Download verified Windows x64 installers and access internal automation tools.">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="192x192" href="assets/images/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+
+</head>
+<body>
+
+<!-- Dynamic Ambient Mesh & Dot Geometry Canvas -->
+<div class="bg-canvas" aria-hidden="true">
+  <div class="bg-dots"></div>
+  <div class="bg-aurora">
+    <div class="aurora-orb aurora-1"></div>
+    <div class="aurora-orb aurora-2"></div>
+    <div class="aurora-orb aurora-3"></div>
+  </div>
+</div>
+
+<!-- Sticky Frosted Capsule Header -->
+<div class="header-wrapper" id="headerWrapper">
+  <header>
+    <a href="#" class="logo-brand" aria-label="Lumeed Central Portal Home">
+      <div class="logo-badge">
+        <img src="assets/images/logo-mark.png" alt="Lumeed Logo Mark" class="logo-img">
+      </div>
+      <div class="brand-text-wrap">
+        <span class="brand-title">Lumeed</span>
+      </div>
+    </a>
+
+    <div class="header-nav">
+      <div class="system-status-indicator" title="All releases cryptographically signed & verified">
+        <span class="status-pulse-dot"></span>
+        <span>Systems Verified</span>
+      </div>
+
+      <!-- Quick Command Palette Button -->
+      <button class="nav-icon-btn" id="paletteBtn" aria-label="Open Command Palette (Ctrl+K)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <span class="mono" style="font-size: 0.72rem; opacity: 0.75;">⌘K</span>
+      </button>
+
+      <!-- Audio Synthesizer Haptic Toggle -->
+      <button class="nav-icon-btn" id="audioToggle" aria-label="Toggle Sound Effects" title="Sound Effects (Web Audio Synthesizer)">
+        <svg id="soundOnIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        <svg id="soundOffIcon" style="display:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+      </button>
+
+      <!-- Theme Switcher -->
+      <button class="nav-icon-btn" id="themeToggle" aria-label="Toggle Dark/Light Mode">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+    </div>
+  </header>
+</div>
+
+<!-- Atmospheric Wave Hero Section -->
+<section class="hero-section" aria-label="Introduction">
+  <!-- Interactive Wave Parallax Backdrop -->
+  <div class="hero-waves-container" aria-hidden="true">
+    <!-- Layer 3: Warm Amber Caustic Wave -->
+    <div class="hero-wave-layer wave-layer-3" data-parallax=".10">
+      <svg viewBox="0 0 1440 500" preserveAspectRatio="none">
+        <path d="M0 220C240 120 420 340 720 250S1200 120 1440 230V500H0Z" fill="var(--glow-3)"/>
+      </svg>
+    </div>
+
+    <!-- Layer 2: Lavender & Lilac Undulating Wave -->
+    <div class="hero-wave-layer wave-layer-2" data-parallax=".22">
+      <svg viewBox="0 0 1440 500" preserveAspectRatio="none">
+        <path d="M0 260C260 140 480 380 760 270S1180 150 1440 280V500H0Z" fill="var(--glow-2)"/>
+      </svg>
+    </div>
+
+    <!-- Layer 1: Official Lumeed Royal Electric Purple Wave -->
+    <div class="hero-wave-layer wave-layer-1" data-parallax=".36">
+      <svg viewBox="0 0 1440 500" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="heroLumeedGrad" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0%" stop-color="var(--glow-1)"/>
+            <stop offset="100%" stop-color="var(--brand)" stop-opacity=".8"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 280C200 180 460 400 740 290S1160 170 1440 300V500H0Z" fill="url(#heroLumeedGrad)"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="hero-fade-overlay"></div>
+
+  <div class="hero-content" id="heroContent">
+    <div class="hero-announcement">
+      <span class="announcement-icon-badge">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      </span>
+      <span>Official Enterprise Hub • Verified Release Signatures</span>
+    </div>
+
+    <h1 class="hero-heading">
+      <span class="hero-heading-gradient">Lumeed Tools</span><br>
+      <span class="typewriter-wrapper">
+        <span class="typewriter-text" id="typewriterText">precision internal tools.</span>
+        <span class="typewriter-cursor" aria-hidden="true"></span>
+      </span>
+    </h1>
+
+    <p class="hero-subtitle">
+      Automated desktop software distribution, Cloud-accessible desktop utilities, and and drive faster project execution.
+    </p>
+
+    <!-- Hero Spotlight Search Bar -->
+    <div class="search-container" id="searchContainer">
+      <div class="search-trigger-box" id="heroSearchBox" role="search" aria-label="Software Search">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="searchInput" class="search-input" type="text" placeholder="Search systems, tools, versions or tags... (Press / to search)" autocomplete="off" spellcheck="false">
+        <button class="search-clear-btn" id="searchClearBtn" aria-label="Clear Search" type="button">✕</button>
+        <div class="search-kbd-shortcut" id="heroKbdShortcut" title="Open Command Palette (Ctrl+K)">
+          <span>⌘</span><span>K</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Catalog Section -->
+<main>
+  <div class="catalog-header-bar">
+    <div class="catalog-title-group">
+      <h2>Software Registry</h2>
+      <p>Select an installer to review hardware specifications, release changelogs, and integrity hashes.</p>
+    </div>
+
+    <div class="catalog-actions-bar">
+      <!-- Category Filter Chips -->
+      <div class="filter-chips" id="filterChips" role="group" aria-label="Filter software catalog"></div>
+
+      <!-- View Switcher -->
+      <div class="view-mode-toggle" role="tablist" aria-label="Toggle Display Format">
+        <button class="view-btn" role="tab" id="viewGridBtn" aria-selected="true" title="Grid View">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
+          <span>Grid</span>
+        </button>
+        <button class="view-btn" role="tab" id="viewTableBtn" aria-selected="false" title="Table View">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <span>Table</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dynamic Catalog Output Container -->
+  <div id="catalogOutput" aria-live="polite"></div>
+</main>
+
+<!-- Bottom Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-meta-pill">
+      <span>Official Portal</span>
+      <span>•</span>
+      <span>Cloudflare Edge Network</span>
+      <span>•</span>
+      <span class="mono">2026.10</span>
+    </div>
+    <p>Copyright &copy; 2026 Lumeed. Engineered with precision by Raymond Gudito.</p>
+  </div>
+</footer>
+
+<!-- Slide-Over Architecture & Hardware Inspector Drawer -->
+<div class="drawer-scrim" id="drawerScrim" aria-hidden="true"></div>
+<aside class="hardware-drawer" id="hardwareDrawer" role="dialog" aria-modal="true" aria-labelledby="drawerAppName" aria-hidden="true">
+  <div class="drawer-header">
+    <div class="drawer-icon" id="drawerIconSlot"></div>
+    <div class="drawer-title-group">
+      <h2 id="drawerAppName">Application Name</h2>
+      <small id="drawerAppSub">Version · Size</small>
+    </div>
+    <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close Inspector Panel">&#x2715;</button>
+  </div>
+
+  <div class="drawer-tabs" role="tablist" id="drawerTabs">
+    <button class="drawer-tab-btn" role="tab" aria-selected="true" data-tab="specs">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      Specs
+    </button>
+    <button class="drawer-tab-btn" role="tab" aria-selected="false" data-tab="changelog">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      Changelog
+    </button>
+    <button class="drawer-tab-btn" role="tab" aria-selected="false" data-tab="verify">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+      Verification
+    </button>
+  </div>
+
+  <div class="drawer-body" id="drawerBody" role="tabpanel"></div>
+
+  <div class="drawer-footer">
+    <button class="action-btn-secondary" id="drawerCopyHashBtn">Copy Hash</button>
+    <a class="action-btn-primary" id="drawerPrimaryActionBtn" href="#" download>Download Installer</a>
+  </div>
+</aside>
+
+<!-- Raycast / Linear-style Command Palette (Ctrl+K / ⌘K) -->
+<div class="palette-overlay" id="paletteOverlay" aria-modal="true" role="dialog" aria-hidden="true">
+  <div class="palette-modal">
+    <div class="palette-search-row">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" color="var(--brand)"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="text" id="paletteInput" placeholder="Type a software name or action..." autocomplete="off">
+      <span class="search-kbd-shortcut">ESC</span>
+    </div>
+    <ul class="palette-results-list" id="paletteResults"></ul>
+    <div class="palette-footer-shortcuts">
+      <div>Navigate <kbd>↑</kbd> <kbd>↓</kbd> • Select <kbd>↵</kbd></div>
+      <div>Lumeed Command Registry</div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

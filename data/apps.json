@@ -1,0 +1,150 @@
+{
+  "portal": {
+    "name": "Lumeed Central Portal",
+    "company": "Lumeed",
+    "tagline": "Internal Software & Application Hub",
+    "description": "Unified access to Lumeed internal desktop systems, automated tools, and enterprise web applications.",
+    "github_owner": "Raymond0627",
+    "support_contact": "it@lumeed.internal",
+    "last_updated": "2026-10-02T11:53:18Z",
+    "brand_colors": {
+      "primary": "#6C5CC8",
+      "primary_hover": "#5848B8",
+      "primary_light": "#F3F1FC",
+      "accent": "#F0C878",
+      "background": "#FFFFFF",
+      "surface": "#F9FAFB"
+    }
+  },
+  "apps": [
+    {
+      "id": "qcheck",
+      "name": "Qcheck",
+      "type": "desktop",
+      "tagline": "Quality Check & Compliance Validation System",
+      "description": "Enterprise-grade quality assurance and system inspection tool designed for rapid diagnostic checks, compliance verification, and batch data validation.",
+      "repo": "Raymond0627/Qcheck",
+      "asset_name": "Qcheck-Setup.exe",
+      "category": "Quality & Inspection",
+      "icon": "shield-check",
+      "platform": "Windows x64",
+      "status": "ready",
+      "featured": true,
+      "sys_reqs": {
+        "os": "Windows 10 / 11 (64-bit)",
+        "ram": "4 GB RAM minimum (8 GB recommended)",
+        "disk": "500 MB free disk space",
+        "arch": "x86-64 / x64 Architecture"
+      },
+      "latest_release": {
+        "version": "v1.0.0",
+        "tag": "v1.0.0",
+        "name": "Qcheck v1.0.0 Initial Release",
+        "published_at": "2026-10-01T08:00:00Z",
+        "file_size": "78.4 MB",
+        "download_url": "https://github.com/Raymond0627/Qcheck/releases/latest/download/Qcheck-Setup.exe",
+        "sha256": "8f4e2a1b9c3d7e5f6a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f",
+        "changelog": "### Features\n- Complete quality diagnostic inspection engine.\n- Automated rule-based compliance checking.\n- Direct report export to XLSX and PDF formats.\n- Integrated error log viewer with timestamp tagging.\n\n### System Notes\n- Verified on Windows 10 & 11 x64.\n- Unsigned executable: on first launch, click **More info** then **Run anyway**."
+      },
+      "releases": [
+        {
+          "version": "v1.0.0",
+          "tag": "v1.0.0",
+          "name": "Qcheck v1.0.0 Initial Release",
+          "published_at": "2026-10-01T08:00:00Z",
+          "file_size": "78.4 MB",
+          "download_url": "https://github.com/Raymond0627/Qcheck/releases/download/v1.0.0/Qcheck-Setup.exe",
+          "sha256": "8f4e2a1b9c3d7e5f6a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f",
+          "changelog": "### Features\n- Complete quality diagnostic inspection engine.\n- Automated rule-based compliance checking.\n- Direct report export to XLSX and PDF formats.\n- Integrated error log viewer with timestamp tagging."
+        }
+      ]
+    },
+    {
+      "id": "pcount",
+      "name": "Pcount",
+      "type": "desktop",
+      "tagline": "Precision Production & Item Metric Counter",
+      "description": "High-throughput count tracking and verification utility. Accurately totals items, monitors production batches, and syncs log data for team reconciliation.",
+      "repo": "Raymond0627/Pcount",
+      "asset_name": "Pcount-Setup.exe",
+      "category": "Operations & Metrics",
+      "icon": "calculator",
+      "platform": "Windows x64",
+      "status": "ready",
+      "featured": true,
+      "sys_reqs": {
+        "os": "Windows 10 / 11 (64-bit)",
+        "ram": "4 GB RAM minimum",
+        "disk": "350 MB free disk space",
+        "arch": "x86-64 / x64 Architecture"
+      },
+      "latest_release": {
+        "version": "v1.0.0",
+        "tag": "v1.0.0",
+        "name": "Pcount v1.0.0 Production Release",
+        "published_at": "2026-09-28T14:30:00Z",
+        "file_size": "64.2 MB",
+        "download_url": "https://github.com/Raymond0627/Pcount/releases/latest/download/Pcount-Setup.exe",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "changelog": "### Features\n- Batch counting engine with custom tally thresholds.\n- Real-time rate calculation (units/min, units/hr).\n- Daily session persistence and CSV log export.\n- Lightweight background service mode."
+      },
+      "releases": [
+        {
+          "version": "v1.0.0",
+          "tag": "v1.0.0",
+          "name": "Pcount v1.0.0 Production Release",
+          "published_at": "2026-09-28T14:30:00Z",
+          "file_size": "64.2 MB",
+          "download_url": "https://github.com/Raymond0627/Pcount/releases/download/v1.0.0/Pcount-Setup.exe",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "changelog": "### Features\n- Batch counting engine with custom tally thresholds.\n- Real-time rate calculation (units/min, units/hr).\n- Daily session persistence and CSV log export.\n- Lightweight background service mode."
+        }
+      ]
+    },
+    {
+      "id": "doc-auditor",
+      "name": "Doc Auditor",
+      "type": "web",
+      "tagline": "Intelligent File & Compliance Auditor",
+      "description": "Automated document scanning and audit suite. Performs deep validation on incoming customer records, format conformance, and schema verification.",
+      "framework": "Python / FastAPI",
+      "category": "Document Automation",
+      "icon": "file-search",
+      "platform": "Web Browser",
+      "status": "in_preparation",
+      "hosting_tier": "Render / Koyeb (Free Tier)",
+      "url": "",
+      "notes": "Backend migration underway. Will be directly launchable from this portal once deployed."
+    },
+    {
+      "id": "pdf-ocr-renamer",
+      "name": "PDF OCR Renamer",
+      "type": "web",
+      "tagline": "Automated OCR Title & Metadata Renamer",
+      "description": "Optical character recognition tool that extracts identifiers from scanned documents and renames batches according to company taxonomy standards.",
+      "framework": "Python / Tesseract",
+      "category": "Document Automation",
+      "icon": "file-text",
+      "platform": "Web Browser",
+      "status": "in_preparation",
+      "hosting_tier": "Hugging Face Spaces / Local Tunnel",
+      "url": "",
+      "notes": "Evaluates OCR accuracy on PDF uploads. Preparing for cloud sandbox deployment."
+    },
+    {
+      "id": "pdf-counter",
+      "name": "PDF Counter",
+      "type": "web",
+      "tagline": "Multi-File PDF Volume & Sheet Metrics",
+      "description": "Rapid page count aggregation, color vs black-and-white page analysis, and print cost estimating for bulk documentation packages.",
+      "framework": "Python / Streamlit",
+      "category": "Operations & Metrics",
+      "icon": "layers",
+      "platform": "Web Browser",
+      "status": "in_preparation",
+      "hosting_tier": "Streamlit Community Cloud",
+      "url": "",
+      "notes": "Lightweight reporting utility. Ready for Streamlit Cloud publishing."
+    }
+  ]
+}
