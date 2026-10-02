@@ -1007,30 +1007,37 @@ window.addEventListener('scroll', function() {
 }, { passive: true });
 
 /* ==========================================================================
-   INTERACTIVE PARALLAX & ORGANIC SINE UNDULATION LOOP
+   INTERACTIVE PARALLAX & ORGANIC SINE UNDULATION FOR ANIMATED ORBS
    ========================================================================== */
-var waveLayers = $$('.hero-wave-layer');
+var orbAnchors = $$('.orb-anchor, .orbital-system');
 var heroContent = $('#heroContent');
-var mouseX = 0, mouseY = 0;
+var targetMouseX = 0, targetMouseY = 0;
+var smoothMouseX = 0, smoothMouseY = 0;
 var reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 window.addEventListener('pointermove', function(e) {
-  mouseX = e.clientX / window.innerWidth - 0.5;
-  mouseY = e.clientY / window.innerHeight - 0.5;
+  targetMouseX = e.clientX / window.innerWidth - 0.5;
+  targetMouseY = e.clientY / window.innerHeight - 0.5;
 }, { passive: true });
 
 function animationLoop(timestamp) {
-  var time = timestamp * 0.0006;
+  // Speed is 2x faster (0.0014 instead of 0.0006)
+  var time = timestamp * 0.0014;
   var scrollY = window.scrollY;
 
+  // Ultra-smooth exponential Lerp interpolation for mouse parallax (no stutter)
+  smoothMouseX += (targetMouseX - smoothMouseX) * 0.075;
+  smoothMouseY += (targetMouseY - smoothMouseY) * 0.075;
+
   if (scrollY <= 1100 && !reduceMotion) {
-    waveLayers.forEach(function(layer, idx) {
-      var speed = +layer.dataset.parallax || 0.2;
-      var organicX = Math.sin(time + idx * 1.6) * 18 * speed;
-      var organicY = Math.cos(time + idx * 1.3) * 12 * speed;
-      var posX = mouseX * speed * 40 + organicX;
-      var posY = scrollY * speed + mouseY * speed * 25 + organicY;
-      layer.style.transform = 'translate3d(' + posX + 'px, ' + posY + 'px, 0)';
+    orbAnchors.forEach(function(anchor, idx) {
+      var speed = +anchor.dataset.parallax || 0.2;
+      // 2x faster harmonic breathing undulation
+      var organicX = Math.sin(time + idx * 1.4) * 22 * speed;
+      var organicY = Math.cos(time + idx * 1.1) * 18 * speed;
+      var posX = smoothMouseX * speed * 65 + organicX;
+      var posY = (scrollY * speed * 0.40) + (smoothMouseY * speed * 42) + organicY;
+      anchor.style.transform = 'translate3d(' + posX + 'px, ' + posY + 'px, 0)';
     });
 
     if (heroContent) {

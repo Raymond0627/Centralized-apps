@@ -423,7 +423,7 @@ header {
 }
 
 /* ==========================================================================
-   HERO BANNER & ATMOSPHERIC WAVES
+   HERO BANNER & MODERN ANIMATED ORBS BACKGROUND (LOGO-INSPIRED AESTHETICS)
    ========================================================================== */
 .hero-section {
   position: relative;
@@ -439,64 +439,356 @@ header {
   z-index: 1;
 }
 
-.hero-waves-container {
+/* Hero Orbs Container */
+.hero-orbs-container {
   position: absolute;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
   z-index: 1;
+  perspective: 1200px;
 }
 
-.hero-wave-layer {
+/* Concentric Orbital Tracks */
+.orbital-system {
   position: absolute;
-  left: -5%;
-  width: 110%;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 760px;
+  height: 760px;
+  pointer-events: none;
+  animation: orbitRotate 42s linear infinite;
   will-change: transform;
 }
 
-.hero-wave-layer svg {
-  display: block;
+.orbital-track {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.track-lg {
+  width: 740px;
+  height: 740px;
+  border: 1px dashed rgba(108, 92, 200, 0.22);
+}
+
+.track-md {
+  width: 520px;
+  height: 520px;
+  border: 1px solid rgba(240, 186, 90, 0.24);
+}
+
+.track-sm {
+  width: 330px;
+  height: 330px;
+  border: 1px dashed rgba(30, 77, 176, 0.20);
+}
+
+@keyframes orbitRotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ==========================================================================
+   LUMINOUS SPHERICAL ORB ANCHORS & EMISSION SYSTEM ("LIGHT IN THE DARK")
+   ========================================================================== */
+.orb-anchor {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.anchor-primary {
+  width: min(390px, 48vw);
+  height: min(390px, 48vw);
+  top: 24%;
+  left: 50%;
+}
+
+.anchor-amber {
+  width: min(310px, 38vw);
+  height: min(310px, 38vw);
+  top: 32%;
+  left: 28%;
+}
+
+.anchor-blue {
+  width: min(250px, 32vw);
+  height: min(250px, 32vw);
+  top: 50%;
+  left: 62%;
+}
+
+.anchor-sat-1 {
+  width: 70px;
+  height: 70px;
+  top: 15%;
+  left: 22%;
+}
+
+.anchor-sat-2 {
+  width: 55px;
+  height: 55px;
+  top: 20%;
+  left: 76%;
+}
+
+.anchor-sat-3 {
+  width: 44px;
+  height: 44px;
+  top: 68%;
+  left: 24%;
+}
+
+/* Lumeed Animated Spherical Orbs */
+.lumeed-orb {
+  position: relative;
   width: 100%;
   height: 100%;
+  border-radius: 50%;
+  will-change: transform, filter;
+  pointer-events: none;
 }
 
-.wave-layer-3 {
-  top: 15%;
-  height: 70%;
-  opacity: 0.4;
-  animation: waveMotion3 28s ease-in-out infinite alternate;
+.lumeed-orb .orb-inner {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
 }
 
-.wave-layer-2 {
-  top: 28%;
-  height: 70%;
-  opacity: 0.55;
-  animation: waveMotion2 22s ease-in-out infinite alternate;
+/* Incandescent Hot Light Core Filament */
+.lumeed-orb .orb-glow-core {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  will-change: opacity, transform;
 }
 
-.wave-layer-1 {
-  top: 44%;
-  height: 70%;
-  opacity: 0.75;
-  animation: waveMotion1 18s ease-in-out infinite alternate;
+/* Glass Specular Top Sheen Highlight */
+.lumeed-orb .orb-sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  mask-image: linear-gradient(135deg, #000 0%, transparent 60%);
+  -webkit-mask-image: linear-gradient(135deg, #000 0%, transparent 60%);
+  pointer-events: none;
 }
 
-@keyframes waveMotion1 {
-  0% { transform: translate3d(0, 0, 0) scaleY(1); }
-  50% { transform: translate3d(20px, -15px, 0) scaleY(1.05); }
-  100% { transform: translate3d(-18px, 10px, 0) scaleY(0.97); }
+/* High-Luminance Volumetric Halo (Light in the Dark) */
+.lumeed-orb .orb-halo {
+  position: absolute;
+  inset: -45%;
+  border-radius: 50%;
+  filter: blur(48px);
+  pointer-events: none;
+  z-index: -1;
+  will-change: opacity, transform;
+  mix-blend-mode: screen;
 }
 
-@keyframes waveMotion2 {
-  0% { transform: translate3d(0, 0, 0) scaleY(0.98); }
-  50% { transform: translate3d(-25px, 18px, 0) scaleY(1.04); }
-  100% { transform: translate3d(20px, -12px, 0) scaleY(1); }
+/* Orb 1: Primary Lumeed Purple (Logo Core) */
+.orb-primary {
+  animation: orbFloatPrimary 8.5s ease-in-out infinite alternate;
 }
 
-@keyframes waveMotion3 {
-  0% { transform: translate3d(0, 0, 0) scaleY(1.03); }
-  50% { transform: translate3d(15px, -10px, 0) scaleY(0.96); }
-  100% { transform: translate3d(-20px, 14px, 0) scaleY(1.04); }
+.orb-primary .orb-inner {
+  background: radial-gradient(circle at 35% 32%, #C4BAFF 0%, #8B7CEE 25%, #6C5CC8 58%, #4A38B0 85%, #2D1E85 100%);
+  box-shadow: inset 0 0 35px rgba(255, 255, 255, 0.95),
+              inset 0 2px 14px #FFFFFF,
+              0 0 60px rgba(124, 109, 230, 0.85),
+              0 0 120px rgba(108, 92, 200, 0.60),
+              0 0 220px rgba(108, 92, 200, 0.35);
+  opacity: 0.92;
+}
+
+.orb-primary .orb-glow-core {
+  background: radial-gradient(circle at 35% 32%, #FFFFFF 0%, rgba(255, 255, 255, 0.95) 15%, rgba(196, 186, 255, 0.5) 35%, transparent 65%);
+  animation: orbCorePulse 4s ease-in-out infinite alternate;
+}
+
+.orb-primary .orb-halo {
+  background: radial-gradient(circle, rgba(140, 120, 255, 0.85) 0%, rgba(108, 92, 200, 0.55) 40%, rgba(108, 92, 200, 0.2) 65%, transparent 80%);
+  animation: orbHaloPulse 5s ease-in-out infinite alternate;
+}
+
+/* Orb 2: Warm Solar Amber (Logo Accent) */
+.orb-amber {
+  animation: orbFloatAccent 10.5s ease-in-out infinite alternate;
+}
+
+.orb-amber .orb-inner {
+  background: radial-gradient(circle at 35% 30%, #FFF8E5 0%, #FCE09D 22%, #F0BA5A 55%, #D68F1C 82%, #8C5508 100%);
+  box-shadow: inset 0 0 32px rgba(255, 255, 255, 0.95),
+              inset 0 2px 12px #FFFFFF,
+              0 0 55px rgba(240, 186, 90, 0.90),
+              0 0 115px rgba(240, 186, 90, 0.60),
+              0 0 200px rgba(240, 186, 90, 0.35);
+  opacity: 0.90;
+}
+
+.orb-amber .orb-glow-core {
+  background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, rgba(255, 255, 255, 0.95) 15%, rgba(254, 240, 199, 0.6) 35%, transparent 65%);
+  animation: orbCorePulse 3.8s ease-in-out infinite alternate 0.5s;
+}
+
+.orb-amber .orb-halo {
+  background: radial-gradient(circle, rgba(255, 215, 115, 0.85) 0%, rgba(240, 186, 90, 0.55) 40%, rgba(240, 186, 90, 0.2) 65%, transparent 80%);
+  animation: orbHaloPulse 5.4s ease-in-out infinite alternate 0.7s;
+}
+
+/* Orb 3: Deep Sapphire Blue (Logo Secondary) */
+.orb-blue {
+  animation: orbFloatSecondary 9.5s ease-in-out infinite alternate;
+}
+
+.orb-blue .orb-inner {
+  background: radial-gradient(circle at 35% 30%, #E0EDFF 0%, #82B3FF 22%, #2B65DB 55%, #1E4DB0 80%, #0A2972 100%);
+  box-shadow: inset 0 0 28px rgba(255, 255, 255, 0.95),
+              inset 0 2px 10px #FFFFFF,
+              0 0 50px rgba(43, 101, 219, 0.85),
+              0 0 105px rgba(30, 77, 176, 0.55),
+              0 0 180px rgba(30, 77, 176, 0.32);
+  opacity: 0.88;
+}
+
+.orb-blue .orb-glow-core {
+  background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, rgba(255, 255, 255, 0.95) 15%, rgba(191, 219, 254, 0.55) 35%, transparent 65%);
+  animation: orbCorePulse 4.2s ease-in-out infinite alternate 1s;
+}
+
+.orb-blue .orb-halo {
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.85) 0%, rgba(30, 77, 176, 0.55) 40%, rgba(30, 77, 176, 0.2) 65%, transparent 80%);
+  animation: orbHaloPulse 5.2s ease-in-out infinite alternate 1.2s;
+}
+
+/* Satellite Micro-Orbs (High-Speed Plasma Sparks) */
+.orb-sat {
+  border-radius: 50%;
+  opacity: 0.90;
+}
+
+.orb-sat .orb-halo {
+  inset: -60%;
+  filter: blur(24px);
+}
+
+.orb-sat-1 {
+  animation: orbFloatSat1 7s ease-in-out infinite alternate;
+}
+.orb-sat-1 .orb-inner {
+  background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, #C4B5FD 30%, #7C3AED 80%, #5B21B6 100%);
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.8), 0 0 60px rgba(124, 58, 237, 0.4);
+}
+.orb-sat-1 .orb-halo {
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.8) 0%, transparent 70%);
+}
+
+.orb-sat-2 {
+  animation: orbFloatSat2 8.5s ease-in-out infinite alternate;
+}
+.orb-sat-2 .orb-inner {
+  background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, #FDE68A 30%, #F59E0B 80%, #B45309 100%);
+  box-shadow: 0 0 28px rgba(245, 158, 11, 0.85), 0 0 55px rgba(245, 158, 11, 0.45);
+}
+.orb-sat-2 .orb-halo {
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.8) 0%, transparent 70%);
+}
+
+.orb-sat-3 {
+  animation: orbFloatSat3 7.8s ease-in-out infinite alternate;
+}
+.orb-sat-3 .orb-inner {
+  background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, #93C5FD 30%, #2563EB 80%, #1E40AF 100%);
+  box-shadow: 0 0 25px rgba(37, 99, 235, 0.85), 0 0 50px rgba(37, 99, 235, 0.45);
+}
+.orb-sat-3 .orb-halo {
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.8) 0%, transparent 70%);
+}
+
+/* Dark Mode Overrides for Orbs (Deep Obsidian Canvas with Radiant Light) */
+:root[data-theme="dark"] .orb-primary .orb-inner {
+  opacity: 0.98;
+  box-shadow: inset 0 0 45px rgba(255, 255, 255, 0.95),
+              inset 0 2px 14px #FFFFFF,
+              0 0 80px rgba(124, 109, 230, 0.95),
+              0 0 160px rgba(108, 92, 200, 0.75),
+              0 0 260px rgba(108, 92, 200, 0.45);
+}
+
+:root[data-theme="dark"] .orb-amber .orb-inner {
+  opacity: 0.96;
+  box-shadow: inset 0 0 40px rgba(255, 255, 255, 0.95),
+              inset 0 2px 14px #FFFFFF,
+              0 0 75px rgba(240, 186, 90, 0.95),
+              0 0 150px rgba(240, 186, 90, 0.70),
+              0 0 240px rgba(240, 186, 90, 0.45);
+}
+
+:root[data-theme="dark"] .orb-blue .orb-inner {
+  opacity: 0.95;
+  box-shadow: inset 0 0 35px rgba(255, 255, 255, 0.95),
+              inset 0 2px 12px #FFFFFF,
+              0 0 70px rgba(59, 114, 232, 0.95),
+              0 0 140px rgba(30, 77, 176, 0.65),
+              0 0 220px rgba(30, 77, 176, 0.40);
+}
+
+/* Smooth 2x Faster Floating Keyframe Motions */
+@keyframes orbFloatPrimary {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(36px, -28px, 0) scale(1.06); }
+  100% { transform: translate3d(-28px, 24px, 0) scale(0.95); }
+}
+
+@keyframes orbFloatAccent {
+  0% { transform: translate3d(0, 0, 0) scale(0.96); }
+  50% { transform: translate3d(-38px, 32px, 0) scale(1.07); }
+  100% { transform: translate3d(28px, -22px, 0) scale(1.02); }
+}
+
+@keyframes orbFloatSecondary {
+  0% { transform: translate3d(0, 0, 0) scale(1.04); }
+  50% { transform: translate3d(26px, -34px, 0) scale(0.94); }
+  100% { transform: translate3d(-32px, 22px, 0) scale(1.05); }
+}
+
+@keyframes orbFloatSat1 {
+  0% { transform: translate3d(0, 0, 0) scale(0.95); }
+  50% { transform: translate3d(-22px, 18px, 0) scale(1.1); }
+  100% { transform: translate3d(18px, -15px, 0) scale(0.95); }
+}
+
+@keyframes orbFloatSat2 {
+  0% { transform: translate3d(0, 0, 0) scale(1.05); }
+  50% { transform: translate3d(20px, -22px, 0) scale(0.92); }
+  100% { transform: translate3d(-16px, 18px, 0) scale(1.05); }
+}
+
+@keyframes orbFloatSat3 {
+  0% { transform: translate3d(0, 0, 0) scale(0.94); }
+  50% { transform: translate3d(-16px, -18px, 0) scale(1.12); }
+  100% { transform: translate3d(18px, 14px, 0) scale(0.94); }
+}
+
+/* Luminance & Pulsating Light Animations */
+@keyframes orbCorePulse {
+  0% { opacity: 0.85; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+  100% { opacity: 0.75; transform: scale(0.96); }
+}
+
+@keyframes orbHaloPulse {
+  0% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.12); }
+  100% { opacity: 0.45; transform: scale(0.94); }
 }
 
 .hero-fade-overlay {
@@ -504,7 +796,7 @@ header {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 260px;
+  height: 220px;
   background: linear-gradient(to bottom, transparent, var(--bg));
   pointer-events: none;
   z-index: 2;
