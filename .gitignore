@@ -33,6 +33,26 @@ wheels/
 *.pem
 *.key
 
+# Firebase service account keys — NEVER COMMIT THESE
+# Covers both hand-named and Google-generated names, e.g.
+#   centralized-system-d378f-195dde361f73.json
+#   <project>-<project>-<16-hex>.json
+serviceAccountKey.json
+service-account*.json
+centralized-system-*.json
+*-firebase-adminsdk-*.json
+*-[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f].json
+scripts/*Key*.json
+scripts/*key*.json
+
+# Local Trueput data exports (contain internal throughput figures)
+throughput-*.json
+throughput_*.json
+trueput-export*.json
+
+# Local design mockups / reference screenshots (not part of the deployed site)
+*Hero Scene.png
+
 # Operating System Files
 .DS_Store
 .DS_Store?

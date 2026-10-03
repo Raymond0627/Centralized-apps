@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Trueput — Project Throughput Tracker | Lumeed</title>
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Adapter must load AFTER Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js"></script>
+<link rel="stylesheet" href="styles.css" />
+<script>
+  (function() {
+    var saved = localStorage.getItem('lumeed-portal-theme') || localStorage.getItem('tp_theme');
+    var isDark = saved ? saved === 'dark' : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+  })();
+</script>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header>
+    <div class="brand">
+      <div class="logo">
+        <img src="lumeed-logo.png" alt="Lumeed" />
+      </div>
+      <div>
+        <h1>Trueput</h1>
+        <div class="subtitle">Document processing throughput & performance dashboard</div>
+      </div>
+    </div>
+  </header>
+
+<!-- STICKY NAV -->
+  <nav class="topnav" id="topnav" aria-label="Quick navigation">
+    <div class="topnav-inner">
+      <div class="topnav-brand">
+        <img src="lumeed-logo.png" alt="Lumeed" />
+      </div>
+      <a class="topnav-link active" data-goto="section-chart" href="javascript:void(0)">Chart</a>
+      <a class="topnav-link" data-goto="section-weekly" href="javascript:void(0)">Weekly Tracking</a>
+      <a class="topnav-link" data-goto="section-calculators" href="javascript:void(0)">Calculators</a>
+      <span class="topnav-spacer"></span>
+      <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- CHART (TOP) -->
+  <section id="section-chart" class="nav-section">
+    <div class="section-title">Throughput Chart</div>
+    <div class="chart-toolbar">
+      <div class="chart-tabs" id="chartTabs">
+        <button class="chart-tab active" data-pid="groom"><span class="tab-dot green" id="tab-dot-groom"></span>Grooming</button>
+        <button class="chart-tab" data-pid="scan"><span class="tab-dot green" id="tab-dot-scan"></span>Scanning</button>
+        <button class="chart-tab" data-pid="valid"><span class="tab-dot green" id="tab-dot-valid"></span>Validation</button>
+        <button class="chart-tab" data-pid="audit"><span class="tab-dot green" id="tab-dot-audit"></span>Audit</button>
+      </div>
+      <div class="zoom-controls" id="zoomControls">
+          <button class="zoom-btn" id="zoomOut" title="Zoom Out">&#8722;</button>
+          <span class="zoom-label" id="zoomLabel">100%</span>
+          <button class="zoom-btn" id="zoomIn" title="Zoom In">+</button>
+          <span class="zoom-divider"></span>
+          <button class="zoom-btn" id="zoomReset" title="Reset Zoom" style="font-size:12px">&#8634;</button>
+        </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-head">
+        <div class="chart-title" id="mainChartTitle">Grooming — Planned vs Actual vs Projected</div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span class="toggle" id="projectionToggle" style="margin-top:0">
+            <button data-mode="average" class="active">Avg Projection</button>
+            <button data-mode="currentPhase">Current Phase</button>
+          </span>
+          <div id="mainChartStatus"></div>
+        </div>
+      </div>
+      <div class="chart-container"><canvas id="mainChart"></canvas></div>
+    </div>
+    <div class="legend">
+      <span class="legend-item"><span class="legend-dot" style="background:#94a3b8"></span>Planned</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--primary)"></span>Actual</span>
+      <span class="legend-item"><span class="legend-dot" style="background:transparent;border:2px dashed #64748b"></span>Projected (current)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#10b981"></span>On Track</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#f59e0b"></span>At Risk</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#ef4444"></span>Behind</span>
+      <span class="legend-item" style="margin-left:auto;font-size:11px;color:var(--text-soft);font-style:italic">Drag to pan · Scroll to zoom</span>
+    </div>
+    <div class="selected-metrics" id="selectedMetrics"></div>
+  </section>
+
+<!-- WEEKLY TRACKING -->
+  <section id="section-weekly" class="nav-section">
+    <div class="section-title">Weekly Tracking</div>
+    <div class="weekly-section">
+      <div class="weekly-header">
+        <div>
+          <div class="weekly-title">Bulk Entry & Master Table</div>
+          <div class="weekly-sub">Enter pages for all 4 processes per week · auto-enriches chart data</div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="bulk-history-btn" id="prev-week-btn" title="Go to previous week">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            Prev Week
+          </button>
+          <button class="bulk-history-btn" id="next-week-btn" title="Go to next week">
+            Next Week
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- BULK ENTRY FORM -->
+      <div class="bulk-form">
+        <div class="bulk-form-head">
+          <div class="bulk-form-title">Add Weekly Entry</div>
+        </div>
+        <div class="bulk-grid">
+          <div>
+            <label class="input-label">Week Ending</label>
+            <input type="date" id="bulk-week-date" required />
+          </div>
+          <div class="process-col">
+            <label class="input-label">Grooming</label>
+            <input type="number" id="bulk-groom" min="0" step="1" placeholder="Pages" />
+          </div>
+          <div class="process-col">
+            <label class="input-label">Scanning</label>
+            <input type="number" id="bulk-scan" min="0" step="1" placeholder="Pages" />
+          </div>
+          <div class="process-col">
+            <label class="input-label">Validation</label>
+            <input type="number" id="bulk-valid" min="0" step="1" placeholder="Pages" />
+          </div>
+          <div class="process-col">
+            <label class="input-label">Audit</label>
+            <input type="number" id="bulk-audit" min="0" step="1" placeholder="Pages" />
+          </div>
+          <div>
+            <label class="input-label">Boxes</label>
+            <input type="number" id="bulk-boxes" min="0" step="1" placeholder="0" />
+          </div>
+          <div>
+            <label class="input-label">&nbsp;</label>
+            <button class="bulk-add-btn" id="bulk-add-btn">+ Add Week</button>
+          </div>
+        </div>
+        <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+          <div class="autocomplete-wrap" style="flex:1;min-width:180px">
+            <label class="input-label">Paper Type</label>
+            <input type="text" id="bulk-paper-type" placeholder="e.g. A4, Legal, Mixed..." autocomplete="off" />
+            <div class="autocomplete-list" id="paper-ac-list"></div>
+          </div>
+          <div style="flex:0 0 110px">
+            <label class="input-label">Groom Team</label>
+            <input type="number" id="bulk-team-groom" min="1" step="1" placeholder="People" />
+          </div>
+          <div style="flex:0 0 110px">
+            <label class="input-label">Scan Team</label>
+            <input type="number" id="bulk-team-scan" min="1" step="1" placeholder="People" />
+          </div>
+          <div style="flex:0 0 110px">
+            <label class="input-label">Valid Team</label>
+            <input type="number" id="bulk-team-valid" min="1" step="1" placeholder="People" />
+          </div>
+          <div style="flex:0 0 110px">
+            <label class="input-label">Audit Team</label>
+            <input type="number" id="bulk-team-audit" min="1" step="1" placeholder="People" />
+          </div>
+        </div>
+      </div>
+
+      <!-- REMAINING PAGES & PROJECTIONS -->
+      <div class="projections-grid" id="projections-grid"></div>
+
+      <!-- MASTER TABLE -->
+      <div class="master-table-wrap" id="master-table-wrap">
+        <table class="master-table" id="master-table">
+          <thead>
+            <tr>
+              <th style="width:40px"></th>
+              <th>Week Ending</th>
+              <th class="num">Grooming</th>
+              <th class="num">Scanning</th>
+              <th class="num">Validation</th>
+              <th class="num">Audit</th>
+              <th class="num">Total</th>
+              <th>Paper Type</th>
+              <th class="num">Teams</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="master-tbody"></tbody>
+        </table>
+        <div class="master-empty" id="master-empty">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <div>No weekly entries yet.<br>Use the form above to start tracking.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- CALCULATORS -->
+  <section id="section-calculators" class="nav-section">
+    <div class="section-title">Completion Calculators</div>
+    <div class="calculators-grid">
+      <div class="calculator-card">
+        <div class="calculator-head">
+          <div class="calculator-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="calculator-name">Time to Complete</div>
+            <div class="calculator-sub">Calculate days/weeks/months from team output</div>
+          </div>
+        </div>
+        <div class="calculator-body">
+          <div class="input-group">
+            <label class="input-label" id="calc1-output-label">Team Output per Day (pages)</label>
+            <div class="input-row">
+              <input type="number" id="calc1-daily-output" min="1" step="1" value="0" placeholder="e.g. 5000" style="flex:1" />
+              <span class="toggle" data-role="calc1-toggle">
+                <button type="button" data-unit="day" class="active">Per Day</button>
+                <button type="button" data-unit="week">Per Week</button>
+              </span>
+            </div>
+          </div>
+          <div class="input-group">
+            <label class="input-label">Target Pages</label>
+            <input type="number" id="calc1-target" min="1" step="1" value="0" placeholder="e.g. 500000" />
+          </div>
+          <div class="input-group">
+            <label class="input-label">Start Date</label>
+            <div class="input-row">
+              <input type="date" id="calc1-start-date" style="flex:1" />
+              <span class="toggle" data-role="calc1-date-preset">
+                <button type="button" id="calc1-preset-latest" class="active" title="Start from latest tracked date">Latest</button>
+                <button type="button" id="calc1-preset-today" title="Start from today">Today</button>
+              </span>
+            </div>
+            <div class="input-hint" id="calc1-date-hint" style="display:none"></div>
+          </div>
+          <div class="calculator-results calc1-results">
+            <div class="result-item">
+              <div class="result-label">Days Needed</div>
+              <div class="result-value" id="calc1-days">—</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Weeks Needed</div>
+              <div class="result-value" id="calc1-weeks">—</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Months Needed</div>
+              <div class="result-value" id="calc1-months">—</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Complete By</div>
+              <div class="result-value" id="calc1-date" style="font-size:16px">—</div>
+            </div>
+          </div>
+          <div class="calculator-summary" id="calc1-summary"></div>
+        </div>
+      </div>
+
+      <div class="calculator-card">
+        <div class="calculator-head">
+          <div class="calculator-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <div class="calculator-name">Team Size Required</div>
+            <div class="calculator-sub">Calculate people needed for deadline</div>
+          </div>
+        </div>
+        <div class="calculator-body">
+          <div class="input-group">
+            <label class="input-label">Output per Person per Day (pages)</label>
+            <input type="number" id="calc2-per-person" min="1" step="1" value="0" placeholder="e.g. 2000" />
+          </div>
+          <div class="input-group">
+            <label class="input-label">Target Pages</label>
+            <input type="number" id="calc2-target" min="1" step="1" value="0" placeholder="e.g. 500000" />
+          </div>
+<div class="input-group">
+            <label class="input-label">Complete By</label>
+            <div class="input-row">
+              <input type="number" id="calc2-days" min="1" step="1" value="0" placeholder="Days" style="flex:1" />
+              <div class="calc2-date-fields" id="calc2-date-fields" style="flex:1;display:none">
+                <div class="calc2-date-field">
+                  <label class="mini-label">Start</label>
+                  <input type="date" id="calc2-start" />
+                </div>
+                <div class="calc2-date-field">
+                  <label class="mini-label">End</label>
+                  <input type="date" id="calc2-end" />
+                </div>
+              </div>
+              <span class="toggle" data-role="calc2-toggle">
+                <button data-unit="days" class="active">Days</button>
+                <button data-unit="months">Months</button>
+                <button data-unit="date">Date</button>
+              </span>
+            </div>
+            <div class="input-hint" id="calc2-date-hint" style="display:none"></div>
+            <div class="input-hint error" id="calc2-date-error" style="display:none"></div>
+          </div>
+          <div class="calculator-results">
+            <div class="result-item">
+              <div class="result-label">People Needed</div>
+              <div class="result-value" id="calc2-people">—</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Cross-check</div>
+              <div class="result-value" id="calc2-crosscheck">—</div>
+            </div>
+          </div>
+          <div class="calculator-summary" id="calc2-summary"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<button class="scroll-top" id="scroll-top" title="Back to top" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<!-- Firebase SDK vendored locally (compat builds) so cloud sync also works
+     behind corporate proxies or fully offline, where the gstatic CDN is
+     unreachable. The compat builds are required here because store.js is a
+     classic script using window.firebase; the modular gstatic files are ES
+     modules and throw when loaded with a plain <script src>. -->
+<script src="vendor/firebase-app-compat.js"></script>
+<script src="vendor/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="store.js"></script>
+<script src="app.js" defer></script>
+</body>
+</html>
+

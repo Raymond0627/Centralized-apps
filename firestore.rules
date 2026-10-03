@@ -1,0 +1,30 @@
+rules_version = '2';
+
+// Lumeed Trueput — shared throughput dataset.
+//
+// CONFIGURED AS "FULLY OPEN" ON PURPOSE: anyone who can reach the site URL can
+// read and write the throughput figures, because there is no sign-in step.
+//
+// The web apiKey in trueput/firebase-config.js is NOT a secret — it ships in
+// every Firebase web app. These rules ARE the security boundary, so they are
+// what you would tighten later.
+//
+// To lock this down without touching app code, enable Firebase App Check
+// (Project settings → Your apps → App Check), which rejects requests that did
+// not come from your deployed site. To require real accounts as well, switch to
+// Firebase Auth and change the conditions below to `request.auth != null`.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Dataset lives in root-level collections, because Firestore requires a
+    // collection path to have an odd number of segments:
+    //   lumeed_processes/{groom|scan|valid|audit}
+    //   lumeed_weeks/{YYYY-MM-DD}
+    //   lumeed_meta/state
+    match /{document=**} {
+      allow read, write: if true;
+    }
+
+  }
+}

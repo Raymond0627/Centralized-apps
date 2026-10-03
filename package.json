@@ -1,0 +1,17 @@
+{
+  "name": "lumeed-central-portal",
+  "version": "2026.1.0",
+  "private": true,
+  "description": "Lumeed Central Portal — static software registry with Trueput throughput dashboard and Firestore-backed shared data tooling.",
+  "scripts": {
+    "sync": "python scripts/fetch_releases.py",
+    "probe:throughput": "node scripts/probe_throughput.js",
+    "probe:throughput:admin": "node scripts/probe_throughput.js --admin",
+    "seed:throughput": "node scripts/seed_throughput.js",
+    "seed:throughput:admin": "node scripts/seed_throughput.js --commit --admin"
+  },
+  "dependencies": {
+    "firebase": "^12.19.0",
+    "firebase-admin": "^14.5.0"
+  }
+}
