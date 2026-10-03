@@ -64,72 +64,130 @@
   </header>
 </div>
 
-<!-- Modern Animated Orbs Hero Section (Logo-Inspired Aesthetics) -->
+<!-- Hero: Left Content + Right Animated Parallax Tech Scene -->
 <section class="hero-section" aria-label="Introduction">
-  <!-- Interactive Animated Orbs Backdrop -->
-  <div class="hero-orbs-container" aria-hidden="true">
-    <!-- Concentric Orbital Tracks -->
-    <div class="orbital-system" data-parallax=".05">
-      <div class="orbital-track track-lg"></div>
-      <div class="orbital-track track-md"></div>
-      <div class="orbital-track track-sm"></div>
-    </div>
+  <div class="hero-grid">
+  <div class="hero-visual" aria-hidden="true">
+    <div class="hero-scene">
 
-    <!-- Primary Lumeed Purple Orb (Logo Core) -->
-    <div class="orb-anchor anchor-primary" data-parallax=".22">
-      <div class="lumeed-orb orb-primary">
-        <div class="orb-halo"></div>
-        <div class="orb-inner"></div>
-        <div class="orb-glow-core"></div>
-        <div class="orb-sheen"></div>
+      <!-- Sweeping Aurora Brand Light Bands -->
+      <div class="scene-anchor sweep-anchor sweep-anchor-1" data-parallax=".05" data-phase="0">
+        <div class="sweep-band sweep-band-1"></div>
       </div>
-    </div>
+      <div class="scene-anchor sweep-anchor sweep-anchor-2" data-parallax=".09" data-phase="1">
+        <div class="sweep-band sweep-band-2"></div>
+      </div>
 
-    <!-- Warm Solar Amber Orb (Logo Accent) -->
-    <div class="orb-anchor anchor-amber" data-parallax=".16">
-      <div class="lumeed-orb orb-amber">
-        <div class="orb-halo"></div>
-        <div class="orb-inner"></div>
-        <div class="orb-glow-core"></div>
-        <div class="orb-sheen"></div>
+      <!-- Glowing Flow Curves With Traveling Light Bead -->
+      <div class="scene-anchor curves-anchor" data-parallax=".06" data-phase="2">
+        <svg class="sweep-curves" viewBox="0 0 640 540" fill="none" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="curveGradA" x1="670" y1="-30" x2="246" y2="560" gradientUnits="userSpaceOnUse">
+              <stop offset="0" class="curve-stop-1"/>
+              <stop offset="0.45" class="curve-stop-2"/>
+              <stop offset="1" class="curve-stop-3"/>
+            </linearGradient>
+            <linearGradient id="curveGradB" x1="712" y1="70" x2="342" y2="570" gradientUnits="userSpaceOnUse">
+              <stop offset="0" class="curve-stop-1"/>
+              <stop offset="1" class="curve-stop-3"/>
+            </linearGradient>
+          </defs>
+          <g class="curve-drift">
+            <path d="M670 -30C510 30 360 140 292 292C246 396 236 476 246 560" stroke="url(#curveGradA)" stroke-width="3" stroke-linecap="round"/>
+            <path d="M712 70C566 128 438 232 378 358C338 444 332 504 342 570" stroke="url(#curveGradB)" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+            <path class="curve-spark" d="M670 -30C510 30 360 140 292 292C246 396 236 476 246 560" stroke-width="3.5" stroke-linecap="round"/>
+          </g>
+        </svg>
       </div>
-    </div>
 
-    <!-- Deep Sapphire Blue Orb (Logo Secondary) -->
-    <div class="orb-anchor anchor-blue" data-parallax=".26">
-      <div class="lumeed-orb orb-blue">
-        <div class="orb-halo"></div>
-        <div class="orb-inner"></div>
-        <div class="orb-glow-core"></div>
-        <div class="orb-sheen"></div>
+      <!-- Orbit Ring (behind laptop) -->
+      <div class="scene-anchor ring-anchor" data-parallax=".13" data-phase="3">
+        <div class="ring-inner">
+          <div class="ring-base"></div>
+          <div class="ring-arc"></div>
+        </div>
       </div>
-    </div>
 
-    <!-- Floating Satellite Micro-Orbs -->
-    <div class="orb-anchor anchor-sat-1" data-parallax=".12">
-      <div class="lumeed-orb orb-sat orb-sat-1">
-        <div class="orb-halo"></div>
-        <div class="orb-inner"></div>
-        <div class="orb-glow-core"></div>
+      <!-- Stage Floor Glow -->
+      <div class="scene-anchor stage-glow-anchor" data-parallax=".11" data-phase="4">
+        <div class="stage-glow"></div>
       </div>
-    </div>
-    <div class="orb-anchor anchor-sat-2" data-parallax=".20">
-      <div class="lumeed-orb orb-sat orb-sat-2">
-        <div class="orb-halo"></div>
-        <div class="orb-inner"></div>
-        <div class="orb-glow-core"></div>
+
+      <!-- Laptop -->
+      <div class="scene-anchor laptop-anchor" data-parallax=".19" data-phase="5">
+        <div class="laptop-float">
+          <div class="laptop">
+            <div class="laptop-lid">
+              <div class="screen">
+                <div class="screen-topbar"><i></i><i></i><i></i></div>
+                <div class="screen-main">
+                  <div class="screen-sidebar"><span></span><span></span><span></span><span></span></div>
+                  <div class="screen-tiles">
+                    <div class="screen-tile">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    </div>
+                    <div class="screen-tile">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div class="screen-tile">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                    </div>
+                    <div class="screen-tile">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="laptop-base"></div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="orb-anchor anchor-sat-3" data-parallax=".15">
-      <div class="lumeed-orb orb-sat orb-sat-3">
-        <div class="orb-halo"></div>
-        <div class="orb-inner"></div>
-        <div class="orb-glow-core"></div>
+
+      <!-- Orbit Ring Front Segment (passes in front of laptop) -->
+      <div class="scene-anchor ring-front-anchor" data-parallax=".13" data-phase="3">
+        <div class="ring-inner">
+          <div class="ring-arc ring-arc-front"></div>
+        </div>
       </div>
+
+      <!-- Floating Glass Status Cards -->
+      <div class="scene-anchor card-anchor anchor-chart" data-parallax=".24" data-phase="7">
+        <div class="float-card float-card-chart">
+          <div class="chart-bars"><i></i><i></i><i></i><i></i></div>
+          <div class="chart-lines"><span></span><span></span></div>
+        </div>
+      </div>
+      <div class="scene-anchor card-anchor anchor-cloud" data-parallax=".28" data-phase="8">
+        <div class="float-card">
+          <span class="card-icon card-icon-brand">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+          </span>
+          <span>Cloud Ready</span>
+          <span class="status-dot"></span>
+        </div>
+      </div>
+      <div class="scene-anchor card-anchor anchor-secure" data-parallax=".22" data-phase="9">
+        <div class="float-card">
+          <span class="card-icon card-icon-green">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </span>
+          <span>Secure</span>
+          <span class="status-dot"></span>
+        </div>
+      </div>
+      <div class="scene-anchor card-anchor anchor-deploy" data-parallax=".30" data-phase="10">
+        <div class="float-card">
+          <span class="card-icon card-icon-violet">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </span>
+          <span>Fast Deployment</span>
+          <span class="status-dot"></span>
+        </div>
+      </div>
+
     </div>
   </div>
-
-  <div class="hero-fade-overlay"></div>
 
   <div class="hero-content" id="heroContent">
     <div class="hero-announcement">
@@ -163,6 +221,9 @@
       </div>
     </div>
   </div>
+  </div>
+
+  <div class="hero-fade-overlay"></div>
 </section>
 
 <!-- Main Catalog Section -->

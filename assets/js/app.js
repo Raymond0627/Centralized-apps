@@ -7,6 +7,7 @@
 var ICONS = {
   shield: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>',
   calculator: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>',
+  chart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>',
   doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><circle cx="11.5" cy="14.5" r="2.5"/><path d="m13.5 16.5 2 2"/></svg>',
   ocr: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>',
   layers: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>',
@@ -21,130 +22,82 @@ var ICONS = {
    ========================================================================== */
 var CATALOG = [
   {
-    id: 'qcheck',
-    name: 'Qcheck',
-    tagline: 'Quality Check & Compliance Validation System',
+    id: 'qscan',
+    name: 'QScan',
+    tagline: 'Automated OCR Document Renaming & Date Extraction System',
     type: 'desktop',
     category: 'Windows Apps',
-    version: '1.0.0',
-    fileSize: '78.4 MB',
-    description: 'Enterprise quality assurance and automated inspection engine designed for rapid diagnostic checks, compliance verification, and batch reporting.',
+    version: '1.8.2',
+    fileSize: '189.8 MB',
+    description: 'Automated date extraction and intelligent batch PDF renaming engine using high-performance OCR. Features blank page detection, dark-themed PyQt6 review interface, and standardized corporate taxonomy mapping.',
     featured: true,
-    icon: 'shield',
+    icon: 'ocr',
     platform: 'Windows 10 / 11 (64-bit)',
     ram: '4 GB minimum (8 GB recommended)',
-    disk: '500 MB free disk space',
+    disk: '500 MB free disk space (includes bundled Tesseract OCR)',
     arch: 'x86-64 / x64 Architecture',
-    sha256: '8f4e2a1b9c3d7e5f6a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f',
-    downloadUrl: 'https://github.com/Raymond0627/Qcheck/releases/latest/download/Qcheck-Setup.exe',
-    fileName: 'Qcheck-Setup.exe',
+    sha256: '4d5f9fe57009afbb4b3f436a853b5c8e845c0bca1c58c10f887d0409d3bdcab6',
+    downloadUrl: 'https://github.com/Raymond0627/Automated-System/releases/download/v1.8.2/LumeedQScan_Setup_1.8.2.exe',
+    fileName: 'LumeedQScan_Setup_1.8.2.exe',
     status: 'ready',
-    features: ['Compliance Engine', 'XLSX & PDF Export', 'Audit Log Tagging'],
+    features: ['Tesseract OCR Engine', 'Blank Page Detection', 'PyQt6 Review GUI'],
     changelog: [
-      { ver: 'v1.0.0', text: 'Initial enterprise production release with complete quality diagnostic engine.' },
-      { ver: 'v1.0.0', text: 'Automated rule-based compliance checking with instant XLSX/PDF export.' },
-      { ver: 'v1.0.0', text: 'Integrated audit error log viewer with cryptographic timestamping.' }
+      { ver: 'v1.8.2', text: 'PDF auto-rename and OCR date extraction pipeline with modern PyQt6 dark desktop UI.' },
+      { ver: 'v1.8.2', text: 'Intelligent blank page detection and document preview overlay.' },
+      { ver: 'v1.8.2', text: 'Bundled standalone Tesseract OCR distribution for seamless single-step installation.' }
     ]
   },
   {
     id: 'pcount',
     name: 'Pcount',
-    tagline: 'Precision Production & Item Metric Counter',
+    tagline: 'High-Performance PDF Page Counting & Volume Audit System',
     type: 'desktop',
     category: 'Windows Apps',
     version: '1.0.0',
-    fileSize: '64.2 MB',
-    description: 'High-throughput count tracking and verification utility. Accurately totals items, monitors production batches, and syncs log data for team reconciliation.',
+    fileSize: '89.3 MB',
+    description: 'High-performance PDF page counting and volume audit utility built with .NET 8 and WinUI 3. Features recursive local and network directory scanning, PdfPig memory-efficient page extraction, duplicate detection by content hash, and per-folder breakdown reporting.',
     featured: true,
     icon: 'calculator',
-    platform: 'Windows 10 / 11 (64-bit)',
+    platform: 'Windows 10 1809+ / Windows 11 (64-bit)',
     ram: '4 GB minimum',
-    disk: '350 MB free disk space',
+    disk: '250 MB free disk space',
     arch: 'x86-64 / x64 Architecture',
-    sha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
-    downloadUrl: 'https://github.com/Raymond0627/Pcount/releases/latest/download/Pcount-Setup.exe',
-    fileName: 'Pcount-Setup.exe',
+    sha256: 'f6ed8ea903f32c6135ae3db31a1398b98d2fd800b8d60f05cbffb6d55637298b',
+    downloadUrl: 'https://github.com/Raymond0627/Page-Counter/releases/download/v1.0.0/Lumeed-Pcount-Setup-1.0.0-x64.exe',
+    fileName: 'Lumeed-Pcount-Setup-1.0.0-x64.exe',
     status: 'ready',
-    features: ['Batch Counter', 'Live Units/Hr Rate', 'CSV Session Persistence'],
+    features: ['WinUI 3 & .NET 8', 'PdfPig Page Engine', 'Duplicate Detection'],
     changelog: [
-      { ver: 'v1.0.0', text: 'High-speed batch counting engine with user-configurable tally thresholds.' },
-      { ver: 'v1.0.0', text: 'Real-time telemetry calculation (units/min and units/hr).' },
-      { ver: 'v1.0.0', text: 'Daily session persistence and CSV log export with background service mode.' }
+      { ver: 'v1.0.0', text: 'Recursive folder scan of local drives, mapped drives and UNC network paths with live progress.' },
+      { ver: 'v1.0.0', text: 'Exact PDF page counting via PdfPig without full document memory loading.' },
+      { ver: 'v1.0.0', text: 'Duplicate detection by content hash with separate unique vs. total page metrics.' }
     ]
   },
   {
-    id: 'doc-auditor',
-    name: 'Doc Auditor',
-    tagline: 'Intelligent File & Compliance Auditor',
+    id: 'trueput',
+    name: 'Trueput',
+    tagline: 'Document Processing Throughput & Performance Dashboard',
     type: 'web',
     category: 'Web Tools',
-    version: 'Phase 4',
-    fileSize: 'Cloud Hosted',
-    description: 'Automated document scanning and audit suite. Performs deep validation on incoming customer records, format conformance, and schema verification.',
-    featured: false,
-    icon: 'doc',
-    platform: 'Python / FastAPI (Web Browser)',
-    ram: 'Serverless Managed Cloud',
+    version: '2026.1',
+    fileSize: 'Zero Install (Web)',
+    description: 'Enterprise throughput tracking engine and performance dashboard. Features live progress metrics, interactive multi-layer timeline charts, weekly volume logging, and projection calculators.',
+    featured: true,
+    icon: 'chart',
+    platform: 'Web Application (Cross-Platform)',
+    ram: 'Standard Modern Browser',
     disk: 'No local installation required',
-    arch: 'Zero Footprint Cloud',
-    sha256: 'Cloud Hosted Web Container (Containerized)',
-    downloadUrl: '#',
-    fileName: '',
-    status: 'in_preparation',
-    features: ['FastAPI Engine', 'Schema Conformance', 'Deep File Scanning'],
+    arch: 'Client-Side Web Container',
+    sha256: 'Client-Side Web App (Local Persistence)',
+    downloadUrl: 'trueput/index.html',
+    launchUrl: 'trueput/index.html',
+    fileName: 'trueput/index.html',
+    status: 'ready',
+    features: ['Throughput Chart', 'Weekly Tracking', 'Projection Models'],
     changelog: [
-      { ver: 'Phase 4', text: 'Python backend migration to zero-cost cloud tier in active staging.' },
-      { ver: 'Phase 4', text: 'Unauthenticated team launch configuration in development.' }
-    ]
-  },
-  {
-    id: 'pdf-ocr-renamer',
-    name: 'PDF OCR Renamer',
-    tagline: 'Automated OCR Title & Metadata Renamer',
-    type: 'web',
-    category: 'Web Tools',
-    version: 'Phase 4',
-    fileSize: 'Cloud Sandbox',
-    description: 'Optical character recognition tool that extracts identifiers from scanned documents and renames batches according to company taxonomy standards.',
-    featured: false,
-    icon: 'ocr',
-    platform: 'Python / Tesseract (Web Browser)',
-    ram: 'Serverless Managed Cloud',
-    disk: 'No local installation required',
-    arch: 'Zero Footprint Cloud',
-    sha256: 'Cloud Hosted Web Container (Containerized)',
-    downloadUrl: '#',
-    fileName: '',
-    status: 'in_preparation',
-    features: ['Tesseract Engine', 'Batch OCR Parser', 'Taxonomy Matcher'],
-    changelog: [
-      { ver: 'Phase 4', text: 'Tesseract OCR multi-threaded text extraction evaluation.' },
-      { ver: 'Phase 4', text: 'Automated regex identifier mapping for standard enterprise documents.' }
-    ]
-  },
-  {
-    id: 'pdf-counter',
-    name: 'PDF Counter',
-    tagline: 'Multi-File PDF Volume & Sheet Metrics',
-    type: 'web',
-    category: 'Web Tools',
-    version: 'Phase 4',
-    fileSize: 'Streamlit Cloud',
-    description: 'Rapid page count aggregation, color vs black-and-white page analysis, and print cost estimating for bulk documentation packages.',
-    featured: false,
-    icon: 'layers',
-    platform: 'Python / Streamlit (Web Browser)',
-    ram: 'Serverless Managed Cloud',
-    disk: 'No local installation required',
-    arch: 'Zero Footprint Cloud',
-    sha256: 'Cloud Hosted Web Container (Containerized)',
-    downloadUrl: '#',
-    fileName: '',
-    status: 'in_preparation',
-    features: ['Streamlit Reporting', 'Color vs B&W Ink Split', 'Print Cost Model'],
-    changelog: [
-      { ver: 'Phase 4', text: 'Instant PDF sheet aggregation engine configured.' },
-      { ver: 'Phase 4', text: 'Ink coverage percentage calculator and print pricing export.' }
+      { ver: 'v2026.1', text: 'Document processing throughput tracker integrated with unified Lumeed brand system.' },
+      { ver: 'v2026.1', text: 'Interactive multi-phase projection models with automated timeline forecasting.' },
+      { ver: 'v2026.1', text: 'Weekly master table logging with instant local data persistence.' }
     ]
   }
 ];
@@ -157,14 +110,27 @@ try {
       if (data && data.apps && Array.isArray(data.apps)) {
         data.apps.forEach(function(remote) {
           var local = CATALOG.find(function(item) { return item.id === remote.id; });
-          if (local && remote.latest_release) {
-            local.version = (remote.latest_release.version || local.version).replace(/^v/, '');
-            local.fileSize = remote.latest_release.file_size || local.fileSize;
-            local.downloadUrl = remote.latest_release.download_url || local.downloadUrl;
-            if (remote.latest_release.sha256) local.sha256 = remote.latest_release.sha256;
+          if (local) {
+            if (remote.name) local.name = remote.name;
+            if (remote.tagline) local.tagline = remote.tagline;
+            if (remote.description) local.description = remote.description;
+            if (remote.asset_name) local.fileName = remote.asset_name;
+            if (remote.url) {
+              local.downloadUrl = remote.url;
+              local.launchUrl = remote.url;
+            }
+            if (remote.version) local.version = remote.version.replace(/^v/, '');
+            if (remote.file_size) local.fileSize = remote.file_size;
+            if (remote.latest_release) {
+              local.version = (remote.latest_release.version || local.version).replace(/^v/, '');
+              local.fileSize = remote.latest_release.file_size || local.fileSize;
+              local.downloadUrl = remote.latest_release.download_url || local.downloadUrl;
+              if (remote.latest_release.sha256) local.sha256 = remote.latest_release.sha256;
+            }
           }
         });
         renderCatalog();
+        renderFilterChips();
       }
     })
     .catch(function() {
@@ -344,7 +310,7 @@ function renderCatalog() {
       var isReady = app.status === 'ready';
 
       var statusBadge = isReady
-        ? '<span class="card-status-badge ready"><span class="card-status-dot"></span>Production ' + (isWeb ? app.version : 'v' + app.version) + '</span>'
+        ? '<span class="card-status-badge ready"><span class="card-status-dot"></span>Production ' + (isWeb ? 'v' + app.version : 'v' + app.version) + '</span>'
         : '<span class="card-status-badge in_preparation"><span class="card-status-dot"></span>' + app.version + '</span>';
 
       var featurePills = (app.features || []).map(function(f, fi) {
@@ -352,16 +318,25 @@ function renderCatalog() {
         return '<span class="' + cls + '">' + f + '</span>';
       }).join('');
 
-      var primaryAction = isReady
-        ? '<a class="action-btn-primary" href="' + app.downloadUrl + '" download data-app-idx="' + app._index + '" aria-label="Download ' + app.name + '">' +
+      var primaryAction = '';
+      if (app.type === 'desktop' && isReady) {
+        primaryAction = '<a class="action-btn-primary" href="' + app.downloadUrl + '" download data-app-idx="' + app._index + '" aria-label="Download ' + app.name + '">' +
             ICONS.download +
             '<span>Download .EXE</span>' +
             '<span class="btn-size-chip mono">' + app.fileSize + '</span>' +
-          '</a>'
-        : '<button class="action-btn-primary" data-inspect-idx="' + app._index + '" style="background:var(--solid-muted); color:var(--text-muted); box-shadow:none;">' +
+          '</a>';
+      } else if (app.type === 'web' && isReady) {
+        primaryAction = '<a class="action-btn-primary" href="' + (app.launchUrl || app.downloadUrl) + '" data-app-idx="' + app._index + '" aria-label="Launch ' + app.name + '">' +
+            ICONS.launch +
+            '<span>Launch App</span>' +
+            '<span class="btn-size-chip mono">Live</span>' +
+          '</a>';
+      } else {
+        primaryAction = '<button class="action-btn-primary" data-inspect-idx="' + app._index + '" style="background:var(--solid-muted); color:var(--text-muted); box-shadow:none;">' +
             ICONS.launch +
             '<span>Preview Sandbox</span>' +
           '</button>';
+      }
 
       return '<div class="app-card' + (app.featured ? ' featured-wide' : '') + '" data-app-idx="' + app._index + '">' +
         '<div class="card-content-wrap">' +
@@ -370,7 +345,9 @@ function renderCatalog() {
             statusBadge +
           '</div>' +
           '<div class="card-title-group">' +
-            '<h3 class="card-title">' + app.name + '</h3>' +
+            (isWeb && isReady
+              ? '<h3 class="card-title"><a href="' + (app.launchUrl || app.downloadUrl) + '" style="color:inherit; text-decoration:none;" class="card-title-link">' + app.name + ' <span style="font-size:0.75em; opacity:0.6; vertical-align:middle;">↗</span></a></h3>'
+              : '<h3 class="card-title">' + app.name + '</h3>') +
             '<div class="card-tagline">' + app.tagline + '</div>' +
           '</div>' +
           '<p class="card-description">' + app.description + '</p>' +
@@ -415,9 +392,20 @@ function renderCatalog() {
             '<td class="mono font-bold" style="color:var(--brand);">' + (app.type === 'desktop' ? 'v' + app.version : app.version) + '</td>' +
             '<td class="mono">' + app.fileSize + '</td>' +
             '<td>' +
-              '<button class="action-btn-secondary" data-inspect-idx="' + app._index + '" style="padding:6px 12px; font-size:0.78rem;">' +
-                'Inspect' +
-              '</button>' +
+              '<div style="display:flex; gap:6px; align-items:center;">' +
+                (isReady
+                  ? (app.type === 'desktop'
+                      ? '<a class="action-btn-primary" href="' + app.downloadUrl + '" download style="padding:6px 12px; font-size:0.78rem; text-decoration:none;" aria-label="Download ' + app.name + '">' +
+                          ICONS.download + '<span style="margin-left:4px;">Download</span>' +
+                        '</a>'
+                      : '<a class="action-btn-primary" href="' + (app.launchUrl || app.downloadUrl) + '" style="padding:6px 12px; font-size:0.78rem; text-decoration:none;" aria-label="Launch ' + app.name + '">' +
+                          ICONS.launch + '<span style="margin-left:4px;">Launch</span>' +
+                        '</a>')
+                  : '') +
+                '<button class="action-btn-secondary" data-inspect-idx="' + app._index + '" style="padding:6px 12px; font-size:0.78rem;">' +
+                  'Inspect' +
+                '</button>' +
+              '</div>' +
             '</td>' +
           '</tr>';
         }).join('') +
@@ -492,10 +480,18 @@ function renderDrawerPanel(tabName) {
       '</div>';
     } else {
       html = '<div class="checksum-box">' +
-        '<strong style="display:block; margin-bottom:6px;">Cloud Native Service Verification</strong>' +
-        '<p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6;">' +
-          'This tool executes securely in a containerized serverless sandbox. No local binaries or binary checksum validations are required.' +
+        '<div class="checksum-title-row">' +
+          '<strong style="font-size:0.88rem;">Local Web Application Execution</strong>' +
+          '<span class="mono" style="font-size:0.74rem; color:var(--accent-emerald);">Verified Engine</span>' +
+        '</div>' +
+        '<p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6; margin-top:8px;">' +
+          'This web application runs directly in the client browser with zero server installation requirements. All document telemetry, weekly tracking metrics, and session calculations are persisted locally.' +
         '</p>' +
+      '</div>' +
+      '<div style="margin-top:16px;">' +
+        '<a href="' + (app.launchUrl || app.downloadUrl) + '" class="action-btn-primary" style="display:inline-flex; width:100%; justify-content:center; text-decoration:none; padding:12px;">' +
+          ICONS.launch + '<span style="margin-left:6px;">Launch ' + app.name + ' Dashboard</span>' +
+        '</a>' +
       '</div>';
     }
   }
@@ -612,12 +608,14 @@ function openDrawer(index) {
   if (isDesktop) {
     primaryBtn.style.display = 'inline-flex';
     primaryBtn.href = activeApp.downloadUrl;
+    primaryBtn.setAttribute('download', '');
     primaryBtn.innerHTML = ICONS.download + '<span>Download ' + activeApp.name + '</span>';
     copyBtn.style.display = 'inline-flex';
   } else {
     primaryBtn.style.display = 'inline-flex';
-    primaryBtn.href = '#';
-    primaryBtn.innerHTML = ICONS.launch + '<span>Preview Sandbox</span>';
+    primaryBtn.href = activeApp.launchUrl || activeApp.downloadUrl || '#';
+    primaryBtn.removeAttribute('download');
+    primaryBtn.innerHTML = ICONS.launch + '<span>Launch ' + activeApp.name + '</span>';
     copyBtn.style.display = 'none';
   }
 
@@ -676,6 +674,36 @@ function renderPaletteResults() {
         icon: ICONS[app.icon] || ICONS.shield,
         action: function() { openDrawer(idx); }
       });
+
+      if (app.type === 'desktop' && app.status === 'ready' && app.downloadUrl && app.downloadUrl !== '#') {
+        items.push({
+          type: 'download',
+          title: 'Download ' + app.name,
+          subtitle: 'Direct installer download (' + app.fileSize + ')',
+          badge: 'Download',
+          icon: ICONS.download,
+          action: function() {
+            var a = document.createElement('a');
+            a.href = app.downloadUrl;
+            a.download = app.fileName || '';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            playSound('success');
+          }
+        });
+      } else if (app.type === 'web' && app.status === 'ready' && (app.launchUrl || app.downloadUrl) && (app.launchUrl || app.downloadUrl) !== '#') {
+        items.push({
+          type: 'launch',
+          title: 'Launch ' + app.name,
+          subtitle: 'Open web application in browser (' + app.tagline + ')',
+          badge: 'Launch',
+          icon: ICONS.launch,
+          action: function() {
+            window.location.href = app.launchUrl || app.downloadUrl;
+          }
+        });
+      }
     }
   });
 
@@ -875,7 +903,7 @@ $('#themeToggle').onclick = toggleTheme;
 $('#audioToggle').onclick = toggleAudio;
 $('#paletteBtn').onclick = openPalette;
 
-// Drawer triggers in Catalog
+// Drawer triggers and direct actions in Catalog
 catalogOutput.addEventListener('click', function(e) {
   var inspectBtn = e.target.closest('[data-inspect-idx]');
   if (inspectBtn) {
@@ -884,7 +912,21 @@ catalogOutput.addEventListener('click', function(e) {
   }
   var card = e.target.closest('.app-card');
   if (card && !e.target.closest('a')) {
-    openDrawer(+card.dataset.appIdx);
+    var app = CATALOG[+card.dataset.appIdx];
+    if (app && app.type === 'web' && (app.launchUrl || app.downloadUrl) && (app.launchUrl || app.downloadUrl) !== '#') {
+      playSound('open');
+      window.location.href = app.launchUrl || app.downloadUrl;
+    } else {
+      openDrawer(+card.dataset.appIdx);
+    }
+  }
+});
+
+// Trigger download audio feedback
+document.addEventListener('click', function(e) {
+  var dl = e.target.closest('a[download]');
+  if (dl && dl.getAttribute('href') && dl.getAttribute('href') !== '#') {
+    playSound('success');
   }
 });
 
@@ -1007,9 +1049,9 @@ window.addEventListener('scroll', function() {
 }, { passive: true });
 
 /* ==========================================================================
-   INTERACTIVE PARALLAX & ORGANIC SINE UNDULATION FOR ANIMATED ORBS
+   INTERACTIVE PARALLAX & ORGANIC SINE UNDULATION FOR HERO SCENE LAYERS
    ========================================================================== */
-var orbAnchors = $$('.orb-anchor, .orbital-system');
+var sceneLayers = $$('.scene-anchor');
 var heroContent = $('#heroContent');
 var targetMouseX = 0, targetMouseY = 0;
 var smoothMouseX = 0, smoothMouseY = 0;
@@ -1021,7 +1063,6 @@ window.addEventListener('pointermove', function(e) {
 }, { passive: true });
 
 function animationLoop(timestamp) {
-  // Speed is 2x faster (0.0014 instead of 0.0006)
   var time = timestamp * 0.0014;
   var scrollY = window.scrollY;
 
@@ -1030,14 +1071,15 @@ function animationLoop(timestamp) {
   smoothMouseY += (targetMouseY - smoothMouseY) * 0.075;
 
   if (scrollY <= 1100 && !reduceMotion) {
-    orbAnchors.forEach(function(anchor, idx) {
-      var speed = +anchor.dataset.parallax || 0.2;
-      // 2x faster harmonic breathing undulation
-      var organicX = Math.sin(time + idx * 1.4) * 22 * speed;
-      var organicY = Math.cos(time + idx * 1.1) * 18 * speed;
+    sceneLayers.forEach(function(layer, idx) {
+      var speed = +layer.dataset.parallax || 0.2;
+      // Organic sine undulation, phase-offset per layer so the scene breathes
+      var phase = +layer.dataset.phase || idx;
+      var organicX = Math.sin(time + phase * 1.4) * 20 * speed;
+      var organicY = Math.cos(time + phase * 1.1) * 16 * speed;
       var posX = smoothMouseX * speed * 65 + organicX;
       var posY = (scrollY * speed * 0.40) + (smoothMouseY * speed * 42) + organicY;
-      anchor.style.transform = 'translate3d(' + posX + 'px, ' + posY + 'px, 0)';
+      layer.style.transform = 'translate3d(' + posX + 'px, ' + posY + 'px, 0)';
     });
 
     if (heroContent) {
