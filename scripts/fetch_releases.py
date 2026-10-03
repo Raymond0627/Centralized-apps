@@ -39,7 +39,7 @@ def extract_sha256(text):
     return ""
 
 def fetch_repo_releases(repo_path, token=None):
-    """Fetch releases from GitHub API for a repo (e.g. Raymond0627/Qcheck)."""
+    """Fetch releases from GitHub API for a repo (e.g. Raymond0627/Automated-System)."""
     url = f"https://api.github.com/repos/{repo_path}/releases"
     headers = {
         "Accept": "application/vnd.github.v3+json",
@@ -99,31 +99,66 @@ def main():
         asset_target = app.get("asset_name", "").lower()
         parsed_releases = []
 
-        for rel in releases_api:
+        for index, rel in enumerate(releases_api):
             tag = rel.get("tag_name", "")
             name = rel.get("name") or tag
             published_at = rel.get("published_at")
             body = rel.get("body", "")
             sha256 = extract_sha256(body)
 
-            # Match installer asset
+            # Match this release's own installer asset. Prefer an exact filename
+            # match; otherwise take the first .exe so the choice is deterministic
+            # instead of depending on API ordering.
             assets = rel.get("assets", [])
             matched_asset = None
+            first_exe = None
             for a in assets:
-                a_name = a.get("name", "").lower()
+                a_name = (a.get("name") or "").lower()
                 if asset_target and a_name == asset_target:
                     matched_asset = a
                     break
-                elif a_name.endswith(".exe"):
-                    matched_asset = a
+                if first_exe is None and a_name.endswith(".exe"):
+                    first_exe = a
+            if matched_asset is None:
+                matched_asset = first_exe
 
             if matched_asset:
+                # Version-pinned URL taken from the API: it always resolves for
+                # this release, unlike releases/latest/download/<name>, which
+                # 404s as soon as the asset is renamed on a newer release.
                 dl_url = matched_asset.get("browser_download_url")
                 fsize = format_file_size(matched_asset.get("size", 0))
+                asset_real_name = matched_asset.get("name") or ""
             else:
-                # Permanent fallback URL
+                # No asset on this release (rare) — fall back to the tag URL.
                 dl_url = f"https://github.com/{repo}/releases/download/{tag}/{app.get('asset_name', '')}"
                 fsize = "Under 500 MB"
+                asset_real_name = ""
+            # Use the release body as the changelog when it looks like real
+            # content. Placeholder notes ("link will be available…") and very
+            # short bodies are ignored so a hand-written description from an
+            # earlier release is not silently replaced by filler.
+            #
+            # The curated fallback only applies to the newest release, so that
+            # historical entries always resolve from their own body. Otherwise
+            # re-running the sync would rewrite the changelog of every older
+            # release with the newest release's text (not idempotent).
+            is_latest = index == 0
+            existing_cl = app.get("latest_release", {}).get("changelog", "") if is_latest else ""
+            placeholder_markers = (
+                "link will be available",
+                "to be added",
+                "coming soon",
+                "tbd",
+            )
+            body_text = (body or "").strip()
+            is_placeholder = any(marker in body_text.lower() for marker in placeholder_markers)
+            if body_text and len(body_text) > 40 and not is_placeholder:
+                final_cl = body_text
+            elif existing_cl:
+                final_cl = existing_cl
+            else:
+                final_cl = body_text or "Bug fixes and routine performance improvements."
 
             parsed_releases.append({
                 "version": tag,
@@ -132,22 +167,26 @@ def main():
                 "published_at": published_at,
                 "file_size": fsize,
                 "download_url": dl_url,
+                "asset_name": asset_real_name,
                 "sha256": sha256 or app.get("latest_release", {}).get("sha256", ""),
-                "changelog": body or "Bug fixes and routine performance improvements."
+                "changelog": final_cl
             })
 
         if parsed_releases:
+            # GitHub returns releases newest-first, so [0] is the latest.
+            # Its download_url/asset_name were captured from THIS release's own
+            # asset inside the loop. Never reuse a loop-scoped asset variable
+            # here: after the loop it refers to the oldest release, which would
+            # pin the site to an old installer while showing the new version.
             latest = parsed_releases[0]
-            # Ensure latest points to permanent download link if preferred
-            permanent_latest = f"https://github.com/{repo}/releases/latest/download/{app.get('asset_name', '')}"
-            latest_copy = dict(latest)
-            latest_copy["download_url"] = permanent_latest
-
-            app["latest_release"] = latest_copy
+            app["latest_release"] = latest
             app["releases"] = parsed_releases
             app["status"] = "ready"
+            if latest.get("asset_name"):
+                app["asset_name"] = latest["asset_name"]
             updated_count += 1
-            print(f"  ✓ Updated {app.get('name')} to {latest.get('version')} ({latest.get('file_size')})")
+            print(f"  ✓ Updated {app.get('name')} to {latest.get('version')} "
+                  f"({latest.get('file_size')}) → {latest.get('asset_name') or 'no asset'}")
 
     data["portal"]["last_updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 

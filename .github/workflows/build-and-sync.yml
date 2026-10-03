@@ -5,10 +5,11 @@ on:
     branches:
       - main
   schedule:
-    # Optional safety net: sync every 6 hours automatically
+    # Safety net: sync every 6 hours in case the instant trigger is missed
     - cron: '0 */6 * * *'
   workflow_dispatch:
-  # Allows Qcheck / Pcount repos to trigger rebuild on new release
+  # Instant path: QScan / Pcount repos ping this on release publish.
+  # Installed via .github/workflows/on-release.yml in those repos.
   repository_dispatch:
     types: [app-release-published]
 
@@ -42,5 +43,8 @@ jobs:
           git add data/apps.json
           git diff --quiet && git diff --staged --quiet || (git commit -m "chore(data): auto-sync latest releases [skip ci]" && git push)
 
-      # If you connect Cloudflare Pages to your GitHub repository (recommended, 0-config):
-      # Cloudflare Pages will automatically detect the commit and re-deploy in ~30 seconds!
+      # Pushing data/apps.json above triggers a fresh deploy of the static site:
+      #   - Cloudflare Pages (if connected) redeploys automatically, or
+      #   - Vercel (Git integration) rebuilds on every push to main.
+      # The site fetches data/apps.json with cache:'no-store', so the new
+      # version, file size, download URL and changelog appear on the next load.

@@ -1,26 +1,29 @@
 # ==============================================================================
-# COPY THIS WORKFLOW TO:
-#   Raymond0627/Qcheck/.github/workflows/on-release.yml
-#   Raymond0627/Pcount/.github/workflows/on-release.yml
+# TEMPLATE — copy to the repos that publish Lumeed desktop releases:
+#   Raymond0627/Automated-System/.github/workflows/on-release.yml   (QScan)
+#   Raymond0627/Page-Counter/.github/workflows/on-release.yml       (Pcount)
+#
+# The ready-to-paste version lives at:
+#   .github/workflows/on-release.yml
+#
+# ---------------------------------------------------------------------------
+# SETUP (once per repo)
+# ---------------------------------------------------------------------------
+# 1. Create a personal access token with `repo` scope:
+#      https://github.com/settings/tokens
+# 2. In the target repo: Settings -> Secrets and variables -> Actions
+#    -> "New repository secret" -> name: PORTAL_TRIGGER_TOKEN -> paste the token
+# 3. Copy .github/workflows/on-release.yml into that repo's
+#    .github/workflows/ folder and commit it.
+#
+# ---------------------------------------------------------------------------
+# RESULT
+# ---------------------------------------------------------------------------
+# Publishing a release fires this workflow, which pings the portal so it syncs
+# the new version/size/hash/URL within about a minute and redeploys the site.
+#
+# Without it the portal still updates on its own every 6 hours via cron
+# (Sync Releases & Deploy Portal), just with up to 6 hours of delay.
+#
+# Publish the release only AFTER the .exe has finished uploading.
 # ==============================================================================
-# Whenever you publish a new release in Qcheck or Pcount, this workflow pings
-# your Central Portal repo to immediately fetch the new .exe and rebuild!
-# ==============================================================================
-
-name: Notify Central Portal on Release
-
-on:
-  release:
-    types: [published]
-
-jobs:
-  notify-portal:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger Portal Rebuild Dispatch
-        run: |
-          curl -X POST \
-            -H "Accept: application/vnd.github.v3+json" \
-            -H "Authorization: token ${{ secrets.PORTAL_TRIGGER_TOKEN }}" \
-            https://api.github.com/repos/Raymond0627/portal/dispatches \
-            -d '{"event_type": "app-release-published"}'
