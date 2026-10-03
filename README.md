@@ -35,12 +35,23 @@ Centralized systems/
 │       └── icon-192.png       # PWA / high-DPI icon
 ├── data/
 │   └── apps.json              # App catalog registry & release cache
+├── firestore.rules            # Firestore security rules (Trueput dataset)
+├── trueput/                   # Embedded throughput dashboard web application
+│   ├── index.html
+│   ├── styles.css
+│   ├── app.js                 # Dashboard controller, charts & projections
+│   ├── store.js               # Local-first data layer + Firestore sync
+│   ├── firebase-config.js     # Firebase Web App configuration
+│   └── vendor/                # Vendored Firebase compat SDK (no CDN)
 ├── scripts/
-│   └── fetch_releases.py      # GitHub Releases sync script
+│   ├── fetch_releases.py      # GitHub Releases sync script
+│   ├── seed_throughput.js     # Migrate a backup into Firestore (--admin)
+│   └── probe_throughput.js    # Read-only Firestore readiness check
 └── .github/
     └── workflows/
-        ├── build-and-sync.yml # Portal build & auto-sync workflow
-        └── notify-portal-example.yml # Template for Qcheck & Pcount repos
+        ├── build-and-sync.yml # Portal auto-sync on push / cron / dispatch
+        ├── on-release.yml     # Copy into QScan & Pcount repos (instant sync)
+        └── notify-portal-example.yml # Setup notes for the above
 ```
 
 ---
@@ -63,39 +74,221 @@ Centralized systems/
 
 ---
 
-## 4. Releasing a New Version (Zero Drive Links)
+## 3.1 Trueput Shared Database (Firebase Firestore, Free)
 
-Every time you release an update for **Qcheck** or **Pcount**:
+Trueput works immediately with **localStorage only** — the header badge shows
+`Local only`. It shares one live dataset across machines and teammates through
+**Cloud Firestore**, with **real-time** updates (no refresh needed).
+
+**Already configured** for project `centralized-system-d378f`. To finish:
+
+1. **Create the Firestore database**
+   Firebase console → **Build** → **Firestore Database** → **Create database**
+   → Start in **production mode**.
+2. **Publish the security rules**
+   Firebase console → **Firestore Database** → **Rules** → paste the contents
+   of [`firestore.rules`](firestore.rules) → **Publish**.
+   Firestore creates a database with **deny-all** rules, so until you publish
+   these the dashboard can only run in `Local only` mode.
+3. **Deploy** (push to `main`). The header badge switches to
+   `Live · Cloud synced`.
+
+**Firestore document layout**
+
+Firestore requires a **collection path to have an odd number of segments**, so
+the dataset uses root-level collections holding documents:
+
+```
+lumeed_meta/state                     { paperTypes, updatedAt }
+lumeed_processes/groom|scan|valid|audit   { rate, unit, records[] }
+lumeed_weeks/2026-06-02               { date, groom, scan, valid, audit, total, … }
+```
+
+Splitting by process/week (instead of one large document) means two people
+editing different rows never overwrite each other — Firestore merges
+per document.
+
+**Behaviour**
+- Writes hit `localStorage` first, so the dashboard stays fully functional
+  offline, on `file://`, and before the database exists.
+- Firestore `onSnapshot` listeners push teammate changes into every open
+  dashboard live, and the app re-renders automatically.
+- Data tools were removed from the dashboard UI to keep it focused. They remain
+  on the store API and can be run from the browser console or Node:
+  - `TPStore.exportPayload()` — download a JSON backup of the current dataset
+  - `TPStore.importPayload(obj)` — restore from a parsed backup
+  - `TPStore.resetAll()` — clear local data (does not delete cloud documents)
+  - `node scripts/seed_throughput.js <backup.json> --commit --admin` — migrate
+    or restore from a file (see §3.2)
+- The `apiKey` in `trueput/firebase-config.js` is **not** a secret (it is public
+  in every Firebase web app) — `firestore.rules` is the real boundary. It is
+  currently open by design; enable **App Check** to restrict writes to your
+  deployed site without any code changes.
+
+**Free-tier headroom:** 1 GiB stored, 50k reads/day, 20k writes/day. A busy
+team's throughput log uses a tiny fraction of this.
+
+### 3.1.1 Firebase SDK is vendored locally
+
+`trueput/vendor/` contains the **compat** SDK builds
+(`firebase-app-compat.js`, `firebase-firestore-compat.js`) rather than loading
+them from `gstatic.com`. Two reasons:
+
+- The modular gstatic files are **ES modules**. Loaded with a plain
+  `<script src>` they throw a `SyntaxError`, `window.firebase` is never
+  defined, and the dashboard silently falls back to local-only with empty
+  charts. The compat builds attach `window.firebase`, which `store.js` uses.
+- Vendoring removes the CDN dependency entirely, so cloud sync also works
+  behind a corporate proxy or fully offline.
+
+**Where to run it from:** Firestore requires a secure context, so open the
+dashboard over `https://` (the deployed portal) or `http://localhost` — a
+`file://` path cannot reach Firestore and will stay local-only. For a quick
+local check:
+
+```bash
+python -m http.server 8770
+# then browse to http://localhost:8770/trueput/index.html
+```
+
+**Diagnosing sync from the console**
+
+The dashboard no longer shows a status badge, so open DevTools → Console. Sync
+problems are logged automatically as `[trueput] …` warnings:
+
+| Console warning | Meaning | Fix |
+|---|---|---|
+| `rules are blocking this browser` | Firestore rules deny the client | Publish `firestore.rules`, then reload |
+| `SDK or firebase-config.js did not load` | Vendored SDK/config missing | Check `trueput/vendor/` is deployed |
+| `Could not reach Firestore` | Network/proxy issue | Data is safe locally; it syncs when connectivity returns |
+
+You can also inspect state directly at any time:
+
+```js
+TPStore.getSyncState()   // { remoteOk, live, confirmed, pending, reason, lastError }
+TPStore.exportPayload()  // JSON backup of the current dataset
+```
+
+### 3.2 Migrating existing dashboard data
+
+Throughput data lives in the browser's `localStorage` — it is never written to a
+file on disk. To move data you already entered into a browser into the shared
+dataset:
+
+1. In that browser's DevTools console, run `TPStore.exportPayload()` and save
+   the output as `throughput-<year>.json` (or use
+   `copy(JSON.stringify(TPStore.exportPayload()))`).
+2. Preview the migration (writes nothing):
+   ```bash
+   npm install firebase firebase-admin
+   node scripts/seed_throughput.js ~/Downloads/throughput-2026.json
+   ```
+3. Perform it:
+   ```bash
+   node scripts/seed_throughput.js ~/Downloads/throughput-2026.json --commit --admin
+   ```
+   `--admin` uses a service account key and **bypasses security rules**, so it
+   works even while the rules still deny access. Save the key as
+   `scripts/serviceAccountKey.json` (already gitignored — never commit it), or
+   pass a path explicitly: `--admin path/to/key.json`.
+   Drop `--admin` to write through the browser config instead, which requires
+   published rules that permit writes. Add `--reset` to wipe existing
+   documents first; otherwise values merge per document.
+
+Either backup layout is accepted — the current flat map and the older
+array-shaped export. To restore a backup in a browser, run
+`TPStore.importPayload(obj)` in the DevTools console.
+
+Two helper scripts:
+
+| Script | Purpose |
+|---|---|
+| `scripts/seed_throughput.js` | Migrate a backup into Firestore (dry run by default, `--admin` supported) |
+| `scripts/probe_throughput.js` | Read-only check: database created, rules published, current contents (`--admin` supported) |
+
+---
+
+## 4. Releasing a New Version (Fully Automatic)
+
+Every time you release an update for **QScan** or **Pcount**, the portal picks up
+the new version, file size, download URL and changelog on its own.
 
 1. **Build the `.exe`** installer using your standard build script (PyInstaller / Inno Setup).
 2. Go to your repo on GitHub:
-   - `https://github.com/Raymond0627/Qcheck/releases/new` or
-   - `https://github.com/Raymond0627/Pcount/releases/new`
-3. Enter tag version: `v1.1.0` (semantic versioning).
-4. Write your changelog in the release description box.
-5. Attach the `.exe` using the **fixed asset name**:
-   - `Qcheck-Setup.exe` for Qcheck
-   - `Pcount-Setup.exe` for Pcount
-6. Click **Publish release**.
+   - `https://github.com/Raymond0627/Automated-System/releases/new` (QScan)
+   - `https://github.com/Raymond0627/Page-Counter/releases/new` (Pcount)
+3. Enter tag version: `v1.9.0` (semantic versioning).
+4. Write your changelog in the release description box — anything longer than
+   40 characters is published on the portal verbatim.
+5. Attach the `.exe` installer. **Versioned filenames are fine**, e.g.
+   `LumeedQScan_Setup_1.9.0.exe` or `Lumeed-Pcount-Setup-1.0.1-x64.exe`.
+6. **Wait for the upload to finish, then** click **Publish release**.
 
-The permanent download links will automatically point to the new file:
-- `https://github.com/Raymond0627/Qcheck/releases/latest/download/Qcheck-Setup.exe`
-- `https://github.com/Raymond0627/Pcount/releases/latest/download/Pcount-Setup.exe`
+> Publish only *after* the installer finishes uploading. Publishing first lets
+> the sync run before the asset is attached, which would leave the previous
+> version linked.
+
+### How the update happens
+
+```
+publish release  ->  notify workflow (if installed)  ->  repository_dispatch
+                 ->  portal Actions: fetch_releases.py
+                 ->  commits data/apps.json
+                 ->  push to main  ->  site redeploys with the new link
+```
+
+The sync reads the installer URL straight from the GitHub API, so it always
+points at the exact file for that release. (It deliberately does **not** use
+`releases/latest/download/<name>`, which 404s as soon as the filename changes.)
+
+| Path | Latency | Setup |
+|---|---|---|
+| Instant (`repository_dispatch`) | ~1 minute | One-time install below |
+| Cron fallback | up to 6 hours | None — already active |
+
+### One-time setup for instant updates
+
+In **each** repo that publishes releases (QScan, Pcount):
+
+1. Create a token with `repo` scope: <https://github.com/settings/tokens>
+2. **Settings → Secrets and variables → Actions → New repository secret**
+   - Name: `PORTAL_TRIGGER_TOKEN`
+   - Value: the token you just created
+3. Copy [`.github/workflows/on-release.yml`](.github/workflows/on-release.yml)
+   from this repo into that repo's `.github/workflows/` folder and commit it.
+
+Verify it worked: after publishing a release, check the **Actions** tab of
+`Raymond0627/Centralized-apps` for a `Sync Releases & Deploy Portal` run
+triggered by `repository_dispatch`.
+
+### Manually trigger a sync
+
+No setup needed — use the Actions tab → **Sync Releases & Deploy Portal** →
+**Run workflow**, or:
+
+```bash
+python scripts/fetch_releases.py
+git add data/apps.json && git commit -m "chore(data): sync releases"
+```
 
 ---
 
 ## 5. Adding Future Python Web Apps (Phase 4)
 
-To add or update internal web apps (e.g. `Doc Auditor`, `PDF OCR Renamer`, `PDF Counter`):
+To add another hosted web tool (the current suite is **QScan**, **Pcount** and
+**Trueput**):
 
 1. Open `data/apps.json`.
-2. Locate the app entry under `"apps"`.
-3. When deployed to a free host (Render, Hugging Face, Streamlit Community Cloud), update:
+2. Locate the app entry under `"apps"`, or add a new object with
+   `"type": "web"`.
+3. When deployed (Render, Hugging Face, Streamlit, or a subfolder of this repo),
+   set:
    ```json
    "status": "ready",
    "url": "https://your-app.onrender.com"
    ```
-4. The card button will automatically update to a live **"Launch Application"** button.
+4. The card button becomes a live **"Launch App"** button, and clicking the card
+   navigates straight to the app.
 
 ---
 
