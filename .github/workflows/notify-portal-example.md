@@ -4,7 +4,11 @@
 #   Raymond0627/Page-Counter/.github/workflows/on-release.yml       (Pcount)
 #
 # The ready-to-paste version lives at:
-#   .github/workflows/on-release.yml
+#   .github/workflows/on-release.yml.example
+#
+# Note the .example suffix: GitHub Actions executes every *.yml it finds in
+# .github/workflows/, so this template is kept non-executable in the portal
+# repo. Copy it into the target repo as "on-release.yml" to activate it.
 #
 # ---------------------------------------------------------------------------
 # SETUP (once per repo)

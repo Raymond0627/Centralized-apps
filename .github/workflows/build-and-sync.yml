@@ -9,8 +9,7 @@ on:
     - cron: '0 */6 * * *'
   workflow_dispatch:
   # Instant path: QScan / Pcount repos ping this on release publish.
-  # Installed via .github/workflows/on-release.yml in those repos.
-  repository_dispatch:
+  # Installed via .github/workflows/on-release.yml in those repos.  repository_dispatch:
     types: [app-release-published]
 
 permissions:

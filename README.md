@@ -50,9 +50,12 @@ Centralized systems/
 └── .github/
     └── workflows/
         ├── build-and-sync.yml # Portal auto-sync on push / cron / dispatch
-        ├── on-release.yml     # Copy into QScan & Pcount repos (instant sync)
-        └── notify-portal-example.yml # Setup notes for the above
+        ├── on-release.yml.example # Copy into QScan & Pcount repos (instant sync)
+        └── notify-portal-example.md # Setup notes for the above
 ```
+
+> The `.example` suffix matters: GitHub runs every `*.yml` under
+> `.github/workflows/`, so the template is deliberately not executable here.
 
 ---
 
@@ -254,8 +257,8 @@ In **each** repo that publishes releases (QScan, Pcount):
 2. **Settings → Secrets and variables → Actions → New repository secret**
    - Name: `PORTAL_TRIGGER_TOKEN`
    - Value: the token you just created
-3. Copy [`.github/workflows/on-release.yml`](.github/workflows/on-release.yml)
-   from this repo into that repo's `.github/workflows/` folder and commit it.
+3. Copy [`.github/workflows/on-release.yml.example`](.github/workflows/on-release.yml.example)
+   from this repo into that repo's `.github/workflows/on-release.yml` and commit it.
 
 Verify it worked: after publishing a release, check the **Actions** tab of
 `Raymond0627/Centralized-apps` for a `Sync Releases & Deploy Portal` run
