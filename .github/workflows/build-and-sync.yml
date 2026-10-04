@@ -9,11 +9,19 @@ on:
     - cron: '0 */6 * * *'
   workflow_dispatch:
   # Instant path: QScan / Pcount repos ping this on release publish.
-  # Installed via .github/workflows/on-release.yml in those repos.  repository_dispatch:
+  # Installed via .github/workflows/on-release.yml in those repos.
+  repository_dispatch:
     types: [app-release-published]
 
 permissions:
   contents: write
+
+# Never let two syncs race for main. Overlapping runs previously produced
+# non-fast-forward push rejections because each one committed from its own
+# stale checkout.
+concurrency:
+  group: sync-releases
+  cancel-in-progress: false
 
 jobs:
   sync-and-build:
@@ -29,18 +37,38 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Fetch Latest Releases from GitHub
+      - name: Commit & Push Updated Release Metadata
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python scripts/fetch_releases.py
-
-      - name: Commit & Push Updated Release Metadata
-        run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/apps.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(data): auto-sync latest releases" && git push)
+
+          # Regenerate from the newest main on every attempt. Committing from a
+          # stale checkout is what caused "failed to push some refs" whenever
+          # another push landed while this job was running.
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            python scripts/fetch_releases.py
+
+            git add data/apps.json
+            if git diff --quiet && git diff --staged --quiet; then
+              echo "Release metadata already up to date."
+              exit 0
+            fi
+
+            git commit -m "chore(data): auto-sync latest releases"
+            if git push origin main; then
+              echo "Published release metadata update."
+              exit 0
+            fi
+            echo "Push rejected (attempt ${attempt}/3); resyncing and retrying..."
+            sleep 5
+          done
+
+          echo "::error::Could not publish release metadata after 3 attempts."
+          exit 1
 
       # Pushing data/apps.json above triggers a fresh deploy of the static site:
       #   - Cloudflare Pages (if connected) redeploys automatically, or
