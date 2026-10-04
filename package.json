@@ -10,7 +10,7 @@
     "seed:throughput": "node scripts/seed_throughput.js",
     "seed:throughput:admin": "node scripts/seed_throughput.js --commit --admin"
   },
-  "dependencies": {
+  "devDependencies": {
     "firebase": "^12.19.0",
     "firebase-admin": "^14.5.0"
   }
