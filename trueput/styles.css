@@ -494,7 +494,6 @@
     header { padding: 20px; }
     h1 { font-size: 20px; }
     .process-grid { grid-template-columns: 1fr; }
-    .calculators-grid { grid-template-columns: 1fr; }
   }
 
   /* CALCULATORS */
@@ -503,6 +502,13 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
+
+  /* Must come AFTER the .calculators-grid base rule above, otherwise the
+     two-column default wins on equal specificity and overflows the viewport. */
+  @media (max-width: 720px) {
+    .calculators-grid { grid-template-columns: 1fr; }
+  }
+
   .calculator-card {
     background: var(--surface);
     border: 1px solid var(--border-soft);
@@ -510,6 +516,7 @@
     padding: 20px;
     box-shadow: var(--shadow);
     transition: box-shadow 0.2s, transform 0.2s;
+    min-width: 0;
   }
   .calculator-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
   .calculator-head {
@@ -661,7 +668,10 @@
   .master-table-wrap {
     border: 1px solid var(--border-soft);
     border-radius: 12px;
-    overflow: hidden;
+    /* Scroll the wide grid inside its own card instead of letting it stretch
+       the page (or clipping it unreadably) on narrow screens. */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     background: var(--surface-soft);
   }
   .master-table {
