@@ -40,7 +40,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/apps.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(data): auto-sync latest releases [skip ci]" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(data): auto-sync latest releases" && git push)
 
       # Pushing data/apps.json above triggers a fresh deploy of the static site:
       #   - Cloudflare Pages (if connected) redeploys automatically, or

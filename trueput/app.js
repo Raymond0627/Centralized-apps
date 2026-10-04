@@ -1616,7 +1616,7 @@ function updateChartColorsForTheme(theme) {
 
 function initTheme() {
   const saved = localStorage.getItem('lumeed-portal-theme') || localStorage.getItem('tp_theme');
-  const dark = saved ? saved === 'dark' : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  const dark = saved ? saved === 'dark' : true;
   const theme = dark ? 'dark' : 'light';
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem('lumeed-portal-theme', theme);

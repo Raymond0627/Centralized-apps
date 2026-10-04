@@ -803,10 +803,10 @@ function toggleTheme() {
   playSound('click');
 }
 
-/* Restore saved theme */
+/* Restore saved theme; dark is the default when the visitor has no preference */
 try {
   var savedTheme = localStorage.getItem('lumeed-portal-theme');
-  if (savedTheme) document.documentElement.dataset.theme = savedTheme;
+  document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
 } catch(e) {}
 
 /* ==========================================================================

@@ -16,7 +16,7 @@
 <script>
   (function() {
     var saved = localStorage.getItem('lumeed-portal-theme') || localStorage.getItem('tp_theme');
-    var isDark = saved ? saved === 'dark' : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    var isDark = saved ? saved === 'dark' : true;
     document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
   })();
 </script>
