@@ -6,7 +6,7 @@
     "description": "Unified access to Lumeed internal desktop systems, automated tools, and enterprise web applications.",
     "github_owner": "Raymond0627",
     "support_contact": "it@lumeed.internal",
-    "last_updated": "2026-10-06T07:50:48Z",
+    "last_updated": "2026-10-06T08:21:16Z",
     "brand_colors": {
       "primary": "#6C5CC8",
       "primary_hover": "#5848B8",
@@ -24,7 +24,7 @@
       "tagline": "Automated OCR Document Renaming & Date Extraction System",
       "description": "Automated date extraction and intelligent batch PDF renaming engine using high-performance OCR. Features blank page detection, dark-themed PyQt6 review interface, and standardized corporate taxonomy mapping.",
       "repo": "Raymond0627/Automated-System",
-      "asset_name": "LumeedQScan_Setup_1.8.2.exe",
+      "asset_name": "LumeedQScan_Setup_1.8.3.exe",
       "category": "Quality & Inspection",
       "icon": "ocr",
       "platform": "Windows x64",
@@ -37,17 +37,28 @@
         "arch": "x86-64 / x64 Architecture"
       },
       "latest_release": {
-        "version": "v1.8.2",
-        "tag": "v1.8.2",
-        "name": "Lumeed QScan 1.8.2",
-        "published_at": "2026-10-02T16:41:08Z",
+        "version": "v1.8.3",
+        "tag": "v1.8.3",
+        "name": "Lumeed QScan 1.8.3",
+        "published_at": "2026-10-06T08:18:15Z",
         "file_size": "189.8 MB",
-        "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.8.2/LumeedQScan_Setup_1.8.2.exe",
-        "asset_name": "LumeedQScan_Setup_1.8.2.exe",
+        "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.8.3/LumeedQScan_Setup_1.8.3.exe",
+        "asset_name": "LumeedQScan_Setup_1.8.3.exe",
         "sha256": "4d5f9fe57009afbb4b3f436a853b5c8e845c0bca1c58c10f887d0409d3bdcab6",
-        "changelog": "### Features\n- PDF auto-rename and OCR pipeline with modern desktop UI.\n- Bundled Tesseract OCR engine.\n- Blank page detection and duplicate/delete review workflows."
+        "changelog": "## Lumeed QScan 1.8.3\n\n### Improvements & Updates\n- **Real-time Reviewed Counter:** Number on the Reviewed tab now updates immediately upon hitting Enter, OK, or Confirm All.\n- **Background Output Scan:** Output directory is automatically scanned in the background on launch and after scan runs.\n- **Streamlined Processing:** Removed flagged folder staging and disabled rename_log.csv generation.\n- **Updated Default Configuration:** Bundled full 348-company roster and preconfigured default settings (flat layout, division 155, 2 worker threads).\n\n### Downloads\n- LumeedQScan_Setup_1.8.3.exe: Windows installer with embedded Tesseract OCR and preconfigured defaults."
       },
       "releases": [
+        {
+          "version": "v1.8.3",
+          "tag": "v1.8.3",
+          "name": "Lumeed QScan 1.8.3",
+          "published_at": "2026-10-06T08:18:15Z",
+          "file_size": "189.8 MB",
+          "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.8.3/LumeedQScan_Setup_1.8.3.exe",
+          "asset_name": "LumeedQScan_Setup_1.8.3.exe",
+          "sha256": "4d5f9fe57009afbb4b3f436a853b5c8e845c0bca1c58c10f887d0409d3bdcab6",
+          "changelog": "## Lumeed QScan 1.8.3\n\n### Improvements & Updates\n- **Real-time Reviewed Counter:** Number on the Reviewed tab now updates immediately upon hitting Enter, OK, or Confirm All.\n- **Background Output Scan:** Output directory is automatically scanned in the background on launch and after scan runs.\n- **Streamlined Processing:** Removed flagged folder staging and disabled rename_log.csv generation.\n- **Updated Default Configuration:** Bundled full 348-company roster and preconfigured default settings (flat layout, division 155, 2 worker threads).\n\n### Downloads\n- LumeedQScan_Setup_1.8.3.exe: Windows installer with embedded Tesseract OCR and preconfigured defaults."
+        },
         {
           "version": "v1.8.2",
           "tag": "v1.8.2",
@@ -57,7 +68,7 @@
           "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.8.2/LumeedQScan_Setup_1.8.2.exe",
           "asset_name": "LumeedQScan_Setup_1.8.2.exe",
           "sha256": "4d5f9fe57009afbb4b3f436a853b5c8e845c0bca1c58c10f887d0409d3bdcab6",
-          "changelog": "### Features\n- PDF auto-rename and OCR pipeline with modern desktop UI.\n- Bundled Tesseract OCR engine.\n- Blank page detection and duplicate/delete review workflows."
+          "changelog": "Lumeed QScan v1.8.2 - PDF auto-rename and OCR pipeline with modern desktop UI.\n\nDirect download: link will be available below after upload."
         }
       ]
     },
