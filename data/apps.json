@@ -6,7 +6,7 @@
     "description": "Unified access to Lumeed internal desktop systems, automated tools, and enterprise web applications.",
     "github_owner": "Raymond0627",
     "support_contact": "it@lumeed.internal",
-    "last_updated": "2026-10-10T05:19:38Z",
+    "last_updated": "2026-10-10T08:49:30Z",
     "brand_colors": {
       "primary": "#6C5CC8",
       "primary_hover": "#5848B8",
@@ -24,7 +24,7 @@
       "tagline": "Automated OCR Document Renaming & Date Extraction System",
       "description": "Automated date extraction and intelligent batch PDF renaming engine using high-performance OCR. Features blank page detection, dark-themed PyQt6 review interface, and standardized corporate taxonomy mapping.",
       "repo": "Raymond0627/Automated-System",
-      "asset_name": "LumeedQScan_Setup_1.8.3.exe",
+      "asset_name": "LumeedQScan_Setup_1.8.4.exe",
       "category": "Quality & Inspection",
       "icon": "ocr",
       "platform": "Windows x64",
@@ -37,17 +37,28 @@
         "arch": "x86-64 / x64 Architecture"
       },
       "latest_release": {
-        "version": "v1.8.3",
-        "tag": "v1.8.3",
-        "name": "Lumeed QScan 1.8.3",
-        "published_at": "2026-10-06T08:18:15Z",
-        "file_size": "189.8 MB",
-        "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.8.3/LumeedQScan_Setup_1.8.3.exe",
-        "asset_name": "LumeedQScan_Setup_1.8.3.exe",
+        "version": "v1.8.4",
+        "tag": "v1.8.4",
+        "name": "Lumeed QScan 1.8.4",
+        "published_at": "2026-10-10T08:47:46Z",
+        "file_size": "189.9 MB",
+        "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.8.4/LumeedQScan_Setup_1.8.4.exe",
+        "asset_name": "LumeedQScan_Setup_1.8.4.exe",
         "sha256": "4d5f9fe57009afbb4b3f436a853b5c8e845c0bca1c58c10f887d0409d3bdcab6",
-        "changelog": "## Lumeed QScan 1.8.3\n\n### Improvements & Updates\n- **Real-time Reviewed Counter:** Number on the Reviewed tab now updates immediately upon hitting Enter, OK, or Confirm All.\n- **Background Output Scan:** Output directory is automatically scanned in the background on launch and after scan runs.\n- **Streamlined Processing:** Removed flagged folder staging and disabled rename_log.csv generation.\n- **Updated Default Configuration:** Bundled full 348-company roster and preconfigured default settings (flat layout, division 155, 2 worker threads).\n\n### Downloads\n- LumeedQScan_Setup_1.8.3.exe: Windows installer with embedded Tesseract OCR and preconfigured defaults."
+        "changelog": "## Lumeed QScan 1.8.4\n\n### New features\n- **Organize Pages** - open two documents from the same Review tab side by side and drag/reorder pages between them, with a single in-dialog Undo and direct file save on the Reviewed tab.\n- **Merge with...** - right-click a document, pick another, and merge its pages into the first (the right-clicked document keeps its name).\n- **Multi-source company resolver** - resolves company names from letterheads, signatures, a roster gazetteer, and folder hints (not just case captions), with a configurable \"Company Confidence\" gate in Settings.\n- **Automatic roster learning** - confirming a document now auto-adds the company to the roster and remembers folder/letterhead hints.\n\n### Fixes\n- Fixed a crash when dragging pages in the Organize window.\n- The Reviewed date corrector now shows month abbreviations (01 Jan, 02 Feb, ...).\n\n### Downloads\n- `LumeedQScan_Setup_1.8.4.exe`: Windows installer with embedded Tesseract OCR."
       },
       "releases": [
+        {
+          "version": "v1.8.4",
+          "tag": "v1.8.4",
+          "name": "Lumeed QScan 1.8.4",
+          "published_at": "2026-10-10T08:47:46Z",
+          "file_size": "189.9 MB",
+          "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.8.4/LumeedQScan_Setup_1.8.4.exe",
+          "asset_name": "LumeedQScan_Setup_1.8.4.exe",
+          "sha256": "4d5f9fe57009afbb4b3f436a853b5c8e845c0bca1c58c10f887d0409d3bdcab6",
+          "changelog": "## Lumeed QScan 1.8.4\n\n### New features\n- **Organize Pages** - open two documents from the same Review tab side by side and drag/reorder pages between them, with a single in-dialog Undo and direct file save on the Reviewed tab.\n- **Merge with...** - right-click a document, pick another, and merge its pages into the first (the right-clicked document keeps its name).\n- **Multi-source company resolver** - resolves company names from letterheads, signatures, a roster gazetteer, and folder hints (not just case captions), with a configurable \"Company Confidence\" gate in Settings.\n- **Automatic roster learning** - confirming a document now auto-adds the company to the roster and remembers folder/letterhead hints.\n\n### Fixes\n- Fixed a crash when dragging pages in the Organize window.\n- The Reviewed date corrector now shows month abbreviations (01 Jan, 02 Feb, ...).\n\n### Downloads\n- `LumeedQScan_Setup_1.8.4.exe`: Windows installer with embedded Tesseract OCR."
+        },
         {
           "version": "v1.8.3",
           "tag": "v1.8.3",
