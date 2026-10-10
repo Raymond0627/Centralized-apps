@@ -6,7 +6,7 @@
     "description": "Unified access to Lumeed internal desktop systems, automated tools, and enterprise web applications.",
     "github_owner": "Raymond0627",
     "support_contact": "it@lumeed.internal",
-    "last_updated": "2026-10-10T08:49:30Z",
+    "last_updated": "2026-10-10T11:55:41Z",
     "brand_colors": {
       "primary": "#6C5CC8",
       "primary_hover": "#5848B8",
@@ -90,7 +90,7 @@
       "tagline": "High-Performance PDF Page Counting & Volume Audit System",
       "description": "High-performance PDF page counting and volume audit utility built with .NET 8 and WinUI 3. Features recursive local and network directory scanning, PdfPig memory-efficient page extraction, duplicate detection by content hash, and per-folder breakdown reporting.",
       "repo": "Raymond0627/Page-Counter",
-      "asset_name": "Lumeed-Pcount-Setup-1.0.0-x64.exe",
+      "asset_name": "Lumeed-Pcount-Setup-1.2.0-x64.exe",
       "category": "Operations & Metrics",
       "icon": "calculator",
       "platform": "Windows x64",
@@ -103,17 +103,28 @@
         "arch": "x86-64 / x64 Architecture"
       },
       "latest_release": {
-        "version": "v1.0.0",
-        "tag": "v1.0.0",
-        "name": "Page Counter v1.0.0",
-        "published_at": "2026-10-02T16:52:26Z",
+        "version": "v1.2.0",
+        "tag": "v1.2.0",
+        "name": "Lumeed Pcount v1.2.0",
+        "published_at": "2026-10-10T11:54:12Z",
         "file_size": "89.2 MB",
-        "download_url": "https://github.com/Raymond0627/Page-Counter/releases/download/v1.0.0/Lumeed-Pcount-Setup-1.0.0-x64.exe",
-        "asset_name": "Lumeed-Pcount-Setup-1.0.0-x64.exe",
+        "download_url": "https://github.com/Raymond0627/Page-Counter/releases/download/v1.2.0/Lumeed-Pcount-Setup-1.2.0-x64.exe",
+        "asset_name": "Lumeed-Pcount-Setup-1.2.0-x64.exe",
         "sha256": "f6ed8ea903f32c6135ae3db31a1398b98d2fd800b8d60f05cbffb6d55637298b",
-        "changelog": "### Features\n- Recursive folder scan of local drives, mapped drives and UNC network paths.\n- Exact PDF page counting via PdfPig (no full document parse into memory).\n- Duplicate detection by content hash, with unique vs. total page totals reported separately.\n- Per-folder breakdown in a navigable tree view.\n- Skipped-folder and per-file error reporting instead of silent failures.\n- Cancellable scan with live progress.\n\n### Stack\n- .NET 8, WinUI 3 (Windows App SDK 2.4), self-contained x64 publish.\n- PdfPig for page extraction, CommunityToolkit.Mvvm, xUnit test suite.\n\n### System Requirements\n- Windows 10 1809 (build 17763) or later, 64-bit.\n- Administrator rights for installation.\n\n### Install\nDownload `Lumeed-Pcount-Setup-1.0.0-x64.exe` and run it. The installer bundles the\n.NET 8 runtime; it verifies the Windows App Runtime and redirects to the Microsoft\nStore bootstrapper if it is missing.\n\nUnsigned executable: on first launch Windows SmartScreen may prompt - click\n**More info** then **Run anyway**."
+        "changelog": "## Lumeed Pcount v1.2.0\n\nTheme support and large-scale scan hardening.\n\n### What's new\n- **Theme support** \u2014 a System / Light / Dark picker in the top bar. The choice is remembered between launches (`%LOCALAPPDATA%\\LumeedPcount\\settings.json`).\n- **Large-scale scan hardening** \u2014 reliably scans **300,000+ PDF files**. A single unreadable folder can no longer abort the whole scan; each folder is enumerated in isolation and failures are reported.\n- **Cycle-safe traversal** \u2014 junctions/symlinks can no longer cause an infinite traversal on complex or network storage. Reparse-point directories are skipped and reported (shown in \"Errors / Skipped\") so nothing is silently double-counted.\n- **Correct deep-folder counts** \u2014 file, page, duplicate, and unique-page totals now roll up correctly at any folder nesting depth.\n- **64-bit only** \u2014 x64 and ARM64 (x86 dropped).\n- **Faster UI on huge trees** \u2014 the folder tree now loads collapsed and expands on demand, and the expensive periodic tree rebuild was removed.\n\n### Install\nDownload **`Lumeed-Pcount-Setup-1.2.0-x64.exe`** below and run it.\n\n### Notes\n- Requires Windows 10 version 1809 (x64) or later. The Windows App Runtime 2.4 is bundled with the installer.\n- Duplicate detection is unchanged: two files are duplicates when they share the same filename (case-insensitive) and page count. Unique pages count each distinct (name, page count) once.\n- Junctions/symlinks are intentionally skipped to guarantee termination; their folders appear under \"Errors / Skipped\".\n\n### Internals\n- `FolderScanner` now enumerates via a materialized `IDirectoryLister` inside the guarded region, walks with a visited set, and fails closed when a directory's attributes cannot be read.\n- Folder counters widened to `long`."
       },
       "releases": [
+        {
+          "version": "v1.2.0",
+          "tag": "v1.2.0",
+          "name": "Lumeed Pcount v1.2.0",
+          "published_at": "2026-10-10T11:54:12Z",
+          "file_size": "89.2 MB",
+          "download_url": "https://github.com/Raymond0627/Page-Counter/releases/download/v1.2.0/Lumeed-Pcount-Setup-1.2.0-x64.exe",
+          "asset_name": "Lumeed-Pcount-Setup-1.2.0-x64.exe",
+          "sha256": "f6ed8ea903f32c6135ae3db31a1398b98d2fd800b8d60f05cbffb6d55637298b",
+          "changelog": "## Lumeed Pcount v1.2.0\n\nTheme support and large-scale scan hardening.\n\n### What's new\n- **Theme support** \u2014 a System / Light / Dark picker in the top bar. The choice is remembered between launches (`%LOCALAPPDATA%\\LumeedPcount\\settings.json`).\n- **Large-scale scan hardening** \u2014 reliably scans **300,000+ PDF files**. A single unreadable folder can no longer abort the whole scan; each folder is enumerated in isolation and failures are reported.\n- **Cycle-safe traversal** \u2014 junctions/symlinks can no longer cause an infinite traversal on complex or network storage. Reparse-point directories are skipped and reported (shown in \"Errors / Skipped\") so nothing is silently double-counted.\n- **Correct deep-folder counts** \u2014 file, page, duplicate, and unique-page totals now roll up correctly at any folder nesting depth.\n- **64-bit only** \u2014 x64 and ARM64 (x86 dropped).\n- **Faster UI on huge trees** \u2014 the folder tree now loads collapsed and expands on demand, and the expensive periodic tree rebuild was removed.\n\n### Install\nDownload **`Lumeed-Pcount-Setup-1.2.0-x64.exe`** below and run it.\n\n### Notes\n- Requires Windows 10 version 1809 (x64) or later. The Windows App Runtime 2.4 is bundled with the installer.\n- Duplicate detection is unchanged: two files are duplicates when they share the same filename (case-insensitive) and page count. Unique pages count each distinct (name, page count) once.\n- Junctions/symlinks are intentionally skipped to guarantee termination; their folders appear under \"Errors / Skipped\".\n\n### Internals\n- `FolderScanner` now enumerates via a materialized `IDirectoryLister` inside the guarded region, walks with a visited set, and fails closed when a directory's attributes cannot be read.\n- Folder counters widened to `long`."
+        },
         {
           "version": "v1.0.0",
           "tag": "v1.0.0",
