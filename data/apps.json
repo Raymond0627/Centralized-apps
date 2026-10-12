@@ -6,7 +6,7 @@
     "description": "Unified access to Lumeed internal desktop systems, automated tools, and enterprise web applications.",
     "github_owner": "Raymond0627",
     "support_contact": "it@lumeed.internal",
-    "last_updated": "2026-10-12T05:24:35Z",
+    "last_updated": "2026-10-12T05:49:24Z",
     "brand_colors": {
       "primary": "#6C5CC8",
       "primary_hover": "#5848B8",
@@ -90,7 +90,7 @@
       "tagline": "High-Performance PDF Page Counting & Volume Audit System",
       "description": "High-performance PDF page counting and volume audit utility built with .NET 8 and WinUI 3. Features recursive local and network directory scanning, PdfPig memory-efficient page extraction, duplicate detection by content hash, and per-folder breakdown reporting.",
       "repo": "Raymond0627/Page-Counter",
-      "asset_name": "Lumeed-Pcount-Setup-1.2.1-x64.exe",
+      "asset_name": "Lumeed-Pcount-Setup-1.2.3-x64.exe",
       "category": "Operations & Metrics",
       "icon": "calculator",
       "platform": "Windows x64",
@@ -103,17 +103,28 @@
         "arch": "x86-64 / x64 Architecture"
       },
       "latest_release": {
-        "version": "v1.2.1",
-        "tag": "v1.2.1",
-        "name": "Lumeed Pcount v1.2.1",
-        "published_at": "2026-10-12T02:46:30Z",
+        "version": "v1.2.3",
+        "tag": "v1.2.3",
+        "name": "Lumeed Pcount v1.2.3",
+        "published_at": "2026-10-12T05:47:42Z",
         "file_size": "89.2 MB",
-        "download_url": "https://github.com/Raymond0627/Page-Counter/releases/download/v1.2.1/Lumeed-Pcount-Setup-1.2.1-x64.exe",
-        "asset_name": "Lumeed-Pcount-Setup-1.2.1-x64.exe",
+        "download_url": "https://github.com/Raymond0627/Page-Counter/releases/download/v1.2.3/Lumeed-Pcount-Setup-1.2.3-x64.exe",
+        "asset_name": "Lumeed-Pcount-Setup-1.2.3-x64.exe",
         "sha256": "f6ed8ea903f32c6135ae3db31a1398b98d2fd800b8d60f05cbffb6d55637298b",
-        "changelog": "## Lumeed Pcount v1.2.1\n\nSettings tab, duplicate isolation (with revert), and a working cancel button.\n\n### What's new\n- **Settings tab** \u2014 the app now has **Scan** and **Settings** tabs.\n  - Theme picker moved to Settings (System / Light / Dark).\n  - Toggles to show/hide the **Duplicate Files** and **Unique Pages** cards.\n  - Auto re-scan toggle for isolate/revert.\n- **Cancel/Stop now works** \u2014 clicking Cancel stops the scan, keeps the partial results, and shows the \"Scan cancelled \u2014 results are partial\" banner.\n- **Isolate duplicates** \u2014 moves the extra copies of identical PDFs into a `duplicates` folder that mirrors your folder structure, **keeping one original per group**. Collisions get ` (1)`, ` (2)`\u2026 suffixes; failures are reported.\n- **Revert isolation** \u2014 moves every isolated file back to its original folder using the manifest (`duplicates\\_isolate-manifest.json`).\n- **Better duplicate matching** \u2014 duplicates now require the same **filename + page count + file size** (fewer false positives).\n- **Light-theme fix** \u2014 the minimize / maximize / close buttons are now visible in the Light theme.\n\n### Install\nDownload **`Lumeed-Pcount-Setup-1.2.1-x64.exe`** below and run it.\n\n### Notes\n- Requires Windows 10 version 1809 (x64) or later. The Windows App Runtime 2.4 is bundled.\n- Isolation moves files \u2014 it is **not** a copy. Use **Revert isolation** to undo.\n- The `duplicates` folder is excluded from future scans so isolated copies are never re-flagged.\n\n### Internals\n- `DuplicateIsolator` (Core) performs the moves and keeps a JSON manifest for revert.\n- `DuplicateDetector` groups by name + page count + size.\n- Cancellation is now detected in the scanner loop and surfaced to the UI with partial results."
+        "changelog": "## Lumeed Pcount v1.2.3\n\nSpeed improvements plus a cleaner duplicate workflow.\n\n### Performance\n- **~3\u00d7 faster local scans.** Page counting now runs with `ProcessorCount \u00d7 2` parallel readers (measured **4,729 \u2192 15,547 files/s** on a 16-core benchmark with small PDFs).\n- Race-free progress counter (atomic increments).\n- Removed a redundant per-file `stat` \u2014 the file size now comes from the same open used for the page count.\n\n### Duplicates\n- **Duplicate Files** now counts only the **extra copies** (one original is kept per group), e.g. two pairs of 2 report **2**, not 4.\n- New **Duplicate Pages** card (its own toggle in Settings) = pages of the duplicate copies only.\n- Each grouped row has one **\u201cCopy Paths\u201d** button that copies **every path in the group** \u2014 original and duplicates \u2014 one per line.\n- Original / Duplicate tags are plain labels; the file list auto-sizes so nothing is clipped.\n\n### Fixes\n- **No more crash when copying paths** \u2014 clipboard now uses a crash-safe path (WinRT with a Win32 `CF_UNICODETEXT` fallback) and never throws.\n\n### Install\nDownload **`Lumeed-Pcount-Setup-1.2.3-x64.exe`** below and run it.\n\n### Notes\n- Requires Windows 10 version 1809 (x64) or later. Windows App Runtime 2.4 is bundled.\n- \u201cIsolate duplicates\u201d (Settings) moves extras into `<folder>\\duplicates\\...` and can be reverted.\n- Duplicate matching = same **filename + page count + file size**."
       },
       "releases": [
+        {
+          "version": "v1.2.3",
+          "tag": "v1.2.3",
+          "name": "Lumeed Pcount v1.2.3",
+          "published_at": "2026-10-12T05:47:42Z",
+          "file_size": "89.2 MB",
+          "download_url": "https://github.com/Raymond0627/Page-Counter/releases/download/v1.2.3/Lumeed-Pcount-Setup-1.2.3-x64.exe",
+          "asset_name": "Lumeed-Pcount-Setup-1.2.3-x64.exe",
+          "sha256": "f6ed8ea903f32c6135ae3db31a1398b98d2fd800b8d60f05cbffb6d55637298b",
+          "changelog": "## Lumeed Pcount v1.2.3\n\nSpeed improvements plus a cleaner duplicate workflow.\n\n### Performance\n- **~3\u00d7 faster local scans.** Page counting now runs with `ProcessorCount \u00d7 2` parallel readers (measured **4,729 \u2192 15,547 files/s** on a 16-core benchmark with small PDFs).\n- Race-free progress counter (atomic increments).\n- Removed a redundant per-file `stat` \u2014 the file size now comes from the same open used for the page count.\n\n### Duplicates\n- **Duplicate Files** now counts only the **extra copies** (one original is kept per group), e.g. two pairs of 2 report **2**, not 4.\n- New **Duplicate Pages** card (its own toggle in Settings) = pages of the duplicate copies only.\n- Each grouped row has one **\u201cCopy Paths\u201d** button that copies **every path in the group** \u2014 original and duplicates \u2014 one per line.\n- Original / Duplicate tags are plain labels; the file list auto-sizes so nothing is clipped.\n\n### Fixes\n- **No more crash when copying paths** \u2014 clipboard now uses a crash-safe path (WinRT with a Win32 `CF_UNICODETEXT` fallback) and never throws.\n\n### Install\nDownload **`Lumeed-Pcount-Setup-1.2.3-x64.exe`** below and run it.\n\n### Notes\n- Requires Windows 10 version 1809 (x64) or later. Windows App Runtime 2.4 is bundled.\n- \u201cIsolate duplicates\u201d (Settings) moves extras into `<folder>\\duplicates\\...` and can be reverted.\n- Duplicate matching = same **filename + page count + file size**."
+        },
         {
           "version": "v1.2.1",
           "tag": "v1.2.1",
