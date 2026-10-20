@@ -6,7 +6,7 @@
     "description": "Unified access to Lumeed internal desktop systems, automated tools, and enterprise web applications.",
     "github_owner": "Raymond0627",
     "support_contact": "it@lumeed.internal",
-    "last_updated": "2026-10-19T22:11:51Z",
+    "last_updated": "2026-10-20T02:19:41Z",
     "brand_colors": {
       "primary": "#6C5CC8",
       "primary_hover": "#5848B8",
@@ -114,17 +114,28 @@
         "arch": "x86-64 / x64 Architecture"
       },
       "latest_release": {
-        "version": "v1.2.6",
-        "tag": "v1.2.6",
-        "name": "Lumeed Document Inventory v1.2.6",
-        "published_at": "2026-10-14T05:59:17Z",
-        "file_size": "91.0 MB",
-        "download_url": "https://github.com/Raymond0627/Page-Counter/releases/download/v1.2.6/Lumeed-Pcount-Setup-1.2.6-x64.exe",
-        "asset_name": "Lumeed-Pcount-Setup-1.2.6-x64.exe",
+        "version": "v1.2.7",
+        "tag": "v1.2.7",
+        "name": "v1.2.7",
+        "published_at": "2026-10-20T02:18:55Z",
+        "file_size": "Under 500 MB",
+        "download_url": "https://github.com/Raymond0627/Page-Counter/releases/download/v1.2.7/Lumeed-Pcount-Setup-1.2.6-x64.exe",
+        "asset_name": "",
         "sha256": "f6ed8ea903f32c6135ae3db31a1398b98d2fd800b8d60f05cbffb6d55637298b",
-        "changelog": "## Lumeed Document Inventory v1.2.6\n\nAdds a **Folder Number** column to the Box Count tab and better tracking of files with no box.\n\n### New: Folder Number column (Box Count)\n- New column right after **Box Number**: **Folder Number**.\n- A folder number is a folder named digits-with-a-dot, e.g. `013.01.03`. They are collected at any depth under a box; the same box number across different parents shows the **union** (deduped, sorted).\n- The cell is a **clickable chip**: collapsed it shows the first number + a `+N` hint; **click to expand** a popup with the full list; **click again to close**; opening another cell closes the previous one. The row height never grows.\n\n### \"No box\" tracking\n- The **No box** row lists where the unboxed PDFs live:\n  - If the folder **is a folder number** \u2192 shows the number with its file count, e.g. `033.02.04 (31)` (identical numbers merge).\n  - Otherwise \u2192 shows the **relative folder path** with its count, e.g. `BACKUP10\\PHIL AXA LIFE INSURANCE CORP_6 (4)`.\n\n### Excel export\n- New **Folder Numbers** column. Multiple entries appear on **separate lines inside the same cell** (one per line), e.g.:\n  ```\n  013.01.03\n  013.01.04\n  ```\n- The \"No box\" row lists each source `033.02.04 (31)` on its own line. Totals row still sums files and pages.\n\n### Also included since v1.2.5 (rebuilt)\n- Box Count tab with per-box **Total PDF Files** and **Total Pages** and styled Excel export.\n- Configurable duplicate matching (File name / Page count / File size checkboxes).\n- Redesigned UI: resizable folder pane, 5 colored summary cards, header/path bar, breadcrumb, tab icons; app renamed to **Lumeed Document Inventory**.\n- One-time migration so **all summary cards show by default**; **theme change no longer wipes other settings**.\n- Faster scans (parallel readers + page-count cache); working Cancel; crash-safe path copy.\n\n### Install\nDownload **`Lumeed-Pcount-Setup-1.2.6-x64.exe`** below and run it. Running it over an older install upgrades in place \u2014 no need to uninstall first.\n\n### Notes\n- Requires Windows 10 version 1809 (x64) or later. Windows App Runtime 2.4 is bundled.\n- Isolated duplicates (Settings \u2192 Isolate duplicates) can be reverted."
+        "changelog": "Add ZIP PDF extraction and Excel file counting with new cards/columns"
       },
       "releases": [
+        {
+          "version": "v1.2.7",
+          "tag": "v1.2.7",
+          "name": "v1.2.7",
+          "published_at": "2026-10-20T02:18:55Z",
+          "file_size": "Under 500 MB",
+          "download_url": "https://github.com/Raymond0627/Page-Counter/releases/download/v1.2.7/Lumeed-Pcount-Setup-1.2.6-x64.exe",
+          "asset_name": "",
+          "sha256": "f6ed8ea903f32c6135ae3db31a1398b98d2fd800b8d60f05cbffb6d55637298b",
+          "changelog": "Add ZIP PDF extraction and Excel file counting with new cards/columns"
+        },
         {
           "version": "v1.2.6",
           "tag": "v1.2.6",
