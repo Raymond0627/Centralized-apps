@@ -6,7 +6,7 @@
     "description": "Unified access to Lumeed internal desktop systems, automated tools, and enterprise web applications.",
     "github_owner": "Raymond0627",
     "support_contact": "it@lumeed.internal",
-    "last_updated": "2026-10-20T21:26:48Z",
+    "last_updated": "2026-10-21T04:10:56Z",
     "brand_colors": {
       "primary": "#6C5CC8",
       "primary_hover": "#5848B8",
@@ -101,7 +101,7 @@
       "tagline": "High-Performance PDF Page Counting & Volume Audit System",
       "description": "High-performance PDF page counting and volume audit utility built with .NET 8 and WinUI 3. Features recursive local and network directory scanning, PdfPig memory-efficient page extraction, duplicate detection by content hash, and per-folder breakdown reporting.",
       "repo": "Raymond0627/Page-Counter",
-      "asset_name": "Lumeed-Pcount-Setup-1.2.7-x64.exe",
+      "asset_name": "Lumeed-Pcount-Setup-1.2.8-x64.exe",
       "category": "Operations & Metrics",
       "icon": "calculator",
       "platform": "Windows x64",
@@ -114,17 +114,28 @@
         "arch": "x86-64 / x64 Architecture"
       },
       "latest_release": {
-        "version": "v1.2.7",
-        "tag": "v1.2.7",
-        "name": "v1.2.7",
-        "published_at": "2026-10-20T02:18:55Z",
+        "version": "v1.2.8",
+        "tag": "v1.2.8",
+        "name": "v1.2.8",
+        "published_at": "2026-10-21T02:21:13Z",
         "file_size": "86.0 MB",
-        "download_url": "https://github.com/Raymond0627/Page-Counter/releases/download/v1.2.7/Lumeed-Pcount-Setup-1.2.7-x64.exe",
-        "asset_name": "Lumeed-Pcount-Setup-1.2.7-x64.exe",
+        "download_url": "https://github.com/Raymond0627/Page-Counter/releases/download/v1.2.8/Lumeed-Pcount-Setup-1.2.8-x64.exe",
+        "asset_name": "Lumeed-Pcount-Setup-1.2.8-x64.exe",
         "sha256": "f6ed8ea903f32c6135ae3db31a1398b98d2fd800b8d60f05cbffb6d55637298b",
-        "changelog": "Add ZIP PDF extraction and Excel file counting with new cards/columns"
+        "changelog": "Scan tab: Duplicate Files, Duplicate Pages and Unique Pages cards now update live while scanning instead of only at the end.\n\nBox Count tab: automatically shows results derived from the Scan tab scan - no second scan of the same folder needed. Export to Excel still available.\n\nPackaging: Windows App SDK is now fully self-contained; setup no longer requires or installs the runtime separately."
       },
       "releases": [
+        {
+          "version": "v1.2.8",
+          "tag": "v1.2.8",
+          "name": "v1.2.8",
+          "published_at": "2026-10-21T02:21:13Z",
+          "file_size": "86.0 MB",
+          "download_url": "https://github.com/Raymond0627/Page-Counter/releases/download/v1.2.8/Lumeed-Pcount-Setup-1.2.8-x64.exe",
+          "asset_name": "Lumeed-Pcount-Setup-1.2.8-x64.exe",
+          "sha256": "f6ed8ea903f32c6135ae3db31a1398b98d2fd800b8d60f05cbffb6d55637298b",
+          "changelog": "Scan tab: Duplicate Files, Duplicate Pages and Unique Pages cards now update live while scanning instead of only at the end.\n\nBox Count tab: automatically shows results derived from the Scan tab scan - no second scan of the same folder needed. Export to Excel still available.\n\nPackaging: Windows App SDK is now fully self-contained; setup no longer requires or installs the runtime separately."
+        },
         {
           "version": "v1.2.7",
           "tag": "v1.2.7",
