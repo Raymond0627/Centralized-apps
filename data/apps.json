@@ -6,7 +6,7 @@
     "description": "Unified access to Lumeed internal desktop systems, automated tools, and enterprise web applications.",
     "github_owner": "Raymond0627",
     "support_contact": "it@lumeed.internal",
-    "last_updated": "2026-10-28T06:30:10Z",
+    "last_updated": "2026-10-28T12:30:53Z",
     "brand_colors": {
       "primary": "#6C5CC8",
       "primary_hover": "#5848B8",
@@ -24,7 +24,7 @@
       "tagline": "Automated OCR Document Renaming & Date Extraction System",
       "description": "Automated date extraction and intelligent batch PDF renaming engine using high-performance OCR. Features blank page detection, dark-themed PyQt6 review interface, and standardized corporate taxonomy mapping.",
       "repo": "Raymond0627/Automated-System",
-      "asset_name": "LumeedQScan_Setup_1.9.2.exe",
+      "asset_name": "LumeedQScan_Setup_1.9.3.exe",
       "category": "Quality & Inspection",
       "icon": "ocr",
       "platform": "Windows x64",
@@ -37,17 +37,28 @@
         "arch": "x86-64 / x64 Architecture"
       },
       "latest_release": {
-        "version": "v1.9.2",
-        "tag": "v1.9.2",
-        "name": "Lumeed QScan 1.9.2",
-        "published_at": "2026-10-28T00:57:36Z",
+        "version": "v1.9.3",
+        "tag": "v1.9.3",
+        "name": "Lumeed QScan 1.9.3",
+        "published_at": "2026-10-28T06:58:22Z",
         "file_size": "190.0 MB",
-        "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.9.2/LumeedQScan_Setup_1.9.2.exe",
-        "asset_name": "LumeedQScan_Setup_1.9.2.exe",
+        "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.9.3/LumeedQScan_Setup_1.9.3.exe",
+        "asset_name": "LumeedQScan_Setup_1.9.3.exe",
         "sha256": "4d5f9fe57009afbb4b3f436a853b5c8e845c0bca1c58c10f887d0409d3bdcab6",
-        "changelog": "### Release 1.9.2\n\n#### New Features & Improvements:\n- **Interactive OCR Company Name Selection**:\n  - Highlights detected possible company names directly on PDF preview pages with color-coded confidence badges (1 to 4).\n  - Clicking any highlighted badge fills the company name automatically.\n  - Clicking any unhighlighted text line extracts and auto-fills the company name without typing.\n  - Number hotkeys (1-4) to select candidate badges, Enter to confirm, and Ctrl+Z to undo.\n  - Disk-backed OCR caching and fast digital-first extraction.\n- **Scroll & Selection Position Retention**:\n  - Preserves exact scroll position and active selection across saves, edits, and rescans in both Pending/Auto-Confirmed and Reviewed tabs.\n  - Fixes losing track of files in large (10,000+) document sets after saving in 'Organize Pages' or editing."
+        "changelog": "### Release 1.9.3\n\n#### Fixes & Improvements:\n- **Comprehensive Progression & Position Retention Across All Tabs**:\n  - **Pending & Auto-Confirmed**: Fixed saving/confirming (confirm_date) jumping back to File 1. The cursor and preview now smoothly advance to the next document in sequence without losing position.\n  - **Reviewed Tab**: Fixed output tree reloading and collapsing on saves, renames, and duplicates. The tree now retains its expanded state, stays on the active/renamed file, and preserves scrollbar position.\n  - **Non-Disruptive Scans**: Background output folder rescans no longer wipe out the tree with a placeholder."
       },
       "releases": [
+        {
+          "version": "v1.9.3",
+          "tag": "v1.9.3",
+          "name": "Lumeed QScan 1.9.3",
+          "published_at": "2026-10-28T06:58:22Z",
+          "file_size": "190.0 MB",
+          "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.9.3/LumeedQScan_Setup_1.9.3.exe",
+          "asset_name": "LumeedQScan_Setup_1.9.3.exe",
+          "sha256": "4d5f9fe57009afbb4b3f436a853b5c8e845c0bca1c58c10f887d0409d3bdcab6",
+          "changelog": "### Release 1.9.3\n\n#### Fixes & Improvements:\n- **Comprehensive Progression & Position Retention Across All Tabs**:\n  - **Pending & Auto-Confirmed**: Fixed saving/confirming (confirm_date) jumping back to File 1. The cursor and preview now smoothly advance to the next document in sequence without losing position.\n  - **Reviewed Tab**: Fixed output tree reloading and collapsing on saves, renames, and duplicates. The tree now retains its expanded state, stays on the active/renamed file, and preserves scrollbar position.\n  - **Non-Disruptive Scans**: Background output folder rescans no longer wipe out the tree with a placeholder."
+        },
         {
           "version": "v1.9.2",
           "tag": "v1.9.2",
