@@ -6,7 +6,7 @@
     "description": "Unified access to Lumeed internal desktop systems, automated tools, and enterprise web applications.",
     "github_owner": "Raymond0627",
     "support_contact": "it@lumeed.internal",
-    "last_updated": "2026-10-27T22:00:08Z",
+    "last_updated": "2026-10-28T05:03:13Z",
     "brand_colors": {
       "primary": "#6C5CC8",
       "primary_hover": "#5848B8",
@@ -24,7 +24,7 @@
       "tagline": "Automated OCR Document Renaming & Date Extraction System",
       "description": "Automated date extraction and intelligent batch PDF renaming engine using high-performance OCR. Features blank page detection, dark-themed PyQt6 review interface, and standardized corporate taxonomy mapping.",
       "repo": "Raymond0627/Automated-System",
-      "asset_name": "LumeedQScan_Setup_1.9.1.exe",
+      "asset_name": "LumeedQScan_Setup_1.9.2.exe",
       "category": "Quality & Inspection",
       "icon": "ocr",
       "platform": "Windows x64",
@@ -37,17 +37,28 @@
         "arch": "x86-64 / x64 Architecture"
       },
       "latest_release": {
-        "version": "v1.9.1",
-        "tag": "v1.9.1",
-        "name": "Lumeed QScan 1.9.1",
-        "published_at": "2026-10-27T03:07:03Z",
+        "version": "v1.9.2",
+        "tag": "v1.9.2",
+        "name": "Lumeed QScan 1.9.2",
+        "published_at": "2026-10-28T00:57:36Z",
         "file_size": "190.0 MB",
-        "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.9.1/LumeedQScan_Setup_1.9.1.exe",
-        "asset_name": "LumeedQScan_Setup_1.9.1.exe",
+        "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.9.2/LumeedQScan_Setup_1.9.2.exe",
+        "asset_name": "LumeedQScan_Setup_1.9.2.exe",
         "sha256": "4d5f9fe57009afbb4b3f436a853b5c8e845c0bca1c58c10f887d0409d3bdcab6",
-        "changelog": "## What's new in 1.9.1\n\n### No more duplicate work when Output already exists\n\nFresh **Run Pipeline** now checks the Input folder against the existing Output\nfolder first. It reports how many PDFs are already processed and asks whether to:\n\n- process only the remaining PDFs,\n- reprocess everything, or\n- cancel.\n\nThis means closing or dismissing the **Restore Session** prompt no longer causes\nalready-processed files to be scanned and written again.\n\n### Find remaining files (new tool)\n\n`find_remaining.py` compares renamed/QC-ed output against the original input.\nIt matches by saved session, SHA-256 manifest, page text, and page-image\nfingerprints, so scans with no text layer and documents with deleted pages still\nmatch correctly.\n\n```bat\npython find_remaining.py --input \"D:\\BOX\" --output \"D:\\BOX output\"\n```\n\nIt writes `resume_reports/remaining_pdfs.csv`, `remaining_pdfs.txt`, and\n`output_files.csv`, and can stage only the remaining PDFs with `--stage`.\n\n### Rename manifest\n\nEvery finalized document now appends a row to\n`<output folder>/rename_manifest.csv` with the original path, original SHA-256,\nand final output path. Future comparisons are exact even if output files are\nrenamed or moved.\n\n### Other improvements\n\n- Resume interrupted scans from the saved session plan.\n- Page-image matching handles QC page deletions and re-saved PDFs.\n- Stability fixes for duplicate handling, crop mapping, large documents, and\n  interrupted pipelines.\n\n**Full changelog:** https://github.com/Raymond0627/Automated-System/compare/v1.9.0...v1.9.1"
+        "changelog": "### Release 1.9.2\n\n#### New Features & Improvements:\n- **Interactive OCR Company Name Selection**:\n  - Highlights detected possible company names directly on PDF preview pages with color-coded confidence badges (1 to 4).\n  - Clicking any highlighted badge fills the company name automatically.\n  - Clicking any unhighlighted text line extracts and auto-fills the company name without typing.\n  - Number hotkeys (1-4) to select candidate badges, Enter to confirm, and Ctrl+Z to undo.\n  - Disk-backed OCR caching and fast digital-first extraction.\n- **Scroll & Selection Position Retention**:\n  - Preserves exact scroll position and active selection across saves, edits, and rescans in both Pending/Auto-Confirmed and Reviewed tabs.\n  - Fixes losing track of files in large (10,000+) document sets after saving in 'Organize Pages' or editing."
       },
       "releases": [
+        {
+          "version": "v1.9.2",
+          "tag": "v1.9.2",
+          "name": "Lumeed QScan 1.9.2",
+          "published_at": "2026-10-28T00:57:36Z",
+          "file_size": "190.0 MB",
+          "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.9.2/LumeedQScan_Setup_1.9.2.exe",
+          "asset_name": "LumeedQScan_Setup_1.9.2.exe",
+          "sha256": "4d5f9fe57009afbb4b3f436a853b5c8e845c0bca1c58c10f887d0409d3bdcab6",
+          "changelog": "### Release 1.9.2\n\n#### New Features & Improvements:\n- **Interactive OCR Company Name Selection**:\n  - Highlights detected possible company names directly on PDF preview pages with color-coded confidence badges (1 to 4).\n  - Clicking any highlighted badge fills the company name automatically.\n  - Clicking any unhighlighted text line extracts and auto-fills the company name without typing.\n  - Number hotkeys (1-4) to select candidate badges, Enter to confirm, and Ctrl+Z to undo.\n  - Disk-backed OCR caching and fast digital-first extraction.\n- **Scroll & Selection Position Retention**:\n  - Preserves exact scroll position and active selection across saves, edits, and rescans in both Pending/Auto-Confirmed and Reviewed tabs.\n  - Fixes losing track of files in large (10,000+) document sets after saving in 'Organize Pages' or editing."
+        },
         {
           "version": "v1.9.1",
           "tag": "v1.9.1",
