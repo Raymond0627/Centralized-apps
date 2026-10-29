@@ -6,7 +6,7 @@
     "description": "Unified access to Lumeed internal desktop systems, automated tools, and enterprise web applications.",
     "github_owner": "Raymond0627",
     "support_contact": "it@lumeed.internal",
-    "last_updated": "2026-10-29T05:16:46Z",
+    "last_updated": "2026-10-29T05:55:40Z",
     "brand_colors": {
       "primary": "#6C5CC8",
       "primary_hover": "#5848B8",
@@ -24,7 +24,7 @@
       "tagline": "Automated OCR Document Renaming & Date Extraction System",
       "description": "Automated date extraction and intelligent batch PDF renaming engine using high-performance OCR. Features blank page detection, dark-themed PyQt6 review interface, and standardized corporate taxonomy mapping.",
       "repo": "Raymond0627/Automated-System",
-      "asset_name": "LumeedQScan_Setup_1.9.4.exe",
+      "asset_name": "LumeedQScan_Setup_1.9.5.exe",
       "category": "Quality & Inspection",
       "icon": "ocr",
       "platform": "Windows x64",
@@ -37,17 +37,28 @@
         "arch": "x86-64 / x64 Architecture"
       },
       "latest_release": {
-        "version": "v1.9.4",
-        "tag": "v1.9.4",
-        "name": "Lumeed QScan 1.9.4",
-        "published_at": "2026-10-29T02:25:11Z",
+        "version": "v1.9.5",
+        "tag": "v1.9.5",
+        "name": "Lumeed QScan 1.9.5",
+        "published_at": "2026-10-29T05:53:35Z",
         "file_size": "190.0 MB",
-        "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.9.4/LumeedQScan_Setup_1.9.4.exe",
-        "asset_name": "LumeedQScan_Setup_1.9.4.exe",
+        "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.9.5/LumeedQScan_Setup_1.9.5.exe",
+        "asset_name": "LumeedQScan_Setup_1.9.5.exe",
         "sha256": "4d5f9fe57009afbb4b3f436a853b5c8e845c0bca1c58c10f887d0409d3bdcab6",
-        "changelog": "### Release 1.9.4\n\n#### Fixes & Improvements:\n- **Clean Transparent PDF Page Preview**:\n  - Removed all colored bounding box rectangle fills, borders, and badge tags that covered overlapping text.\n  - Document text renders 100% naturally while maintaining click-to-fill detection in the background.\n- **Nearest Roster Company Resolution on Click**:\n  - Clicking any company text on the page automatically fuzzy-matches against the official company roster.\n  - If a match is found (>= 70%), it auto-fills the clean official roster company name, resolving faded text, missing characters, or OCR typos.\n  - If no roster entry matches, it falls back to filling the raw OCR text.\n- **Accurate Page Sorting Reordering**:\n  - Fixed the drag-and-drop page sort calculation so reordering pages forward or backward drops into the exact target position shown by the indicator."
+        "changelog": "### Release 1.9.5\n\n#### New Features & Bug Fixes:\n- **Full In-App Automatic Updater**:\n  - Automatically queries GitHub for releases on startup and notifies the user with release notes.\n  - One-click 'Update Now' downloads the installer with real-time progress, updates files, and restarts the app.\n  - Added 'Check for Updates' button in Settings tab.\n- **Fixed Page Sorting Drag-and-Drop**:\n  - Restored missing mouse drag & drop event handlers on preview labels.\n  - Improved drop target snapping for responsive reordering.\n- **Auto-Capitalized Output Filenames**:\n  - Added setting to auto-capitalize all PDF output filenames."
       },
       "releases": [
+        {
+          "version": "v1.9.5",
+          "tag": "v1.9.5",
+          "name": "Lumeed QScan 1.9.5",
+          "published_at": "2026-10-29T05:53:35Z",
+          "file_size": "190.0 MB",
+          "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.9.5/LumeedQScan_Setup_1.9.5.exe",
+          "asset_name": "LumeedQScan_Setup_1.9.5.exe",
+          "sha256": "4d5f9fe57009afbb4b3f436a853b5c8e845c0bca1c58c10f887d0409d3bdcab6",
+          "changelog": "### Release 1.9.5\n\n#### New Features & Bug Fixes:\n- **Full In-App Automatic Updater**:\n  - Automatically queries GitHub for releases on startup and notifies the user with release notes.\n  - One-click 'Update Now' downloads the installer with real-time progress, updates files, and restarts the app.\n  - Added 'Check for Updates' button in Settings tab.\n- **Fixed Page Sorting Drag-and-Drop**:\n  - Restored missing mouse drag & drop event handlers on preview labels.\n  - Improved drop target snapping for responsive reordering.\n- **Auto-Capitalized Output Filenames**:\n  - Added setting to auto-capitalize all PDF output filenames."
+        },
         {
           "version": "v1.9.4",
           "tag": "v1.9.4",
