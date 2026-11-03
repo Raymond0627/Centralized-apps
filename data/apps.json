@@ -6,7 +6,7 @@
     "description": "Unified access to Lumeed internal desktop systems, automated tools, and enterprise web applications.",
     "github_owner": "Raymond0627",
     "support_contact": "it@lumeed.internal",
-    "last_updated": "2026-11-03T00:49:04Z",
+    "last_updated": "2026-11-03T13:56:08Z",
     "brand_colors": {
       "primary": "#6C5CC8",
       "primary_hover": "#5848B8",
@@ -24,7 +24,7 @@
       "tagline": "Automated OCR Document Renaming & Date Extraction System",
       "description": "Automated date extraction and intelligent batch PDF renaming engine using high-performance OCR. Features blank page detection, dark-themed PyQt6 review interface, and standardized corporate taxonomy mapping.",
       "repo": "Raymond0627/Automated-System",
-      "asset_name": "LumeedQScan_Setup_1.9.5.exe",
+      "asset_name": "LumeedQScan_Setup_1.9.6.exe",
       "category": "Quality & Inspection",
       "icon": "ocr",
       "platform": "Windows x64",
@@ -37,17 +37,28 @@
         "arch": "x86-64 / x64 Architecture"
       },
       "latest_release": {
-        "version": "v1.9.5",
-        "tag": "v1.9.5",
-        "name": "Lumeed QScan 1.9.5",
-        "published_at": "2026-10-29T05:53:35Z",
+        "version": "v1.9.6",
+        "tag": "v1.9.6",
+        "name": "Lumeed QScan 1.9.6",
+        "published_at": "2026-11-03T05:07:40Z",
         "file_size": "190.0 MB",
-        "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.9.5/LumeedQScan_Setup_1.9.5.exe",
-        "asset_name": "LumeedQScan_Setup_1.9.5.exe",
+        "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.9.6/LumeedQScan_Setup_1.9.6.exe",
+        "asset_name": "LumeedQScan_Setup_1.9.6.exe",
         "sha256": "4d5f9fe57009afbb4b3f436a853b5c8e845c0bca1c58c10f887d0409d3bdcab6",
-        "changelog": "### Release 1.9.5\n\n#### New Features & Bug Fixes:\n- **Full In-App Automatic Updater**:\n  - Automatically queries GitHub for releases on startup and notifies the user with release notes.\n  - One-click 'Update Now' downloads the installer with real-time progress, updates files, and restarts the app.\n  - Added 'Check for Updates' button in Settings tab.\n- **Fixed Page Sorting Drag-and-Drop**:\n  - Restored missing mouse drag & drop event handlers on preview labels.\n  - Improved drop target snapping for responsive reordering.\n- **Auto-Capitalized Output Filenames**:\n  - Added setting to auto-capitalize all PDF output filenames."
+        "changelog": "### Release 1.9.6 - System & Performance Optimizations\n\n#### Key Improvements:\n- **In-Memory File Hash Cache**:\n  - Eliminates repeated full-file disk reads and SHA-256 calculations when loading and navigating document pages.\n  - Disk I/O dropped to 0 on subsequent page views and cache checks.\n- **Lazy Output Folder Scanning**:\n  - Removed eager background output folder crawling at startup. Scans now only initiate on-demand when switching to the Reviewed tab or completing pipeline tasks.\n- **Preview Pixmap LRU Cache**:\n  - Caches rendered PDF page pixmaps in memory. Scrolling up and down through document pages is now instantaneous (0ms CPU re-rasterization).\n- **Non-Blocking Preview Candidate Extraction**:\n  - Digital text extraction runs instantly without triggering synchronous full-page pytesseract scans on the UI thread.\n- **Fast Card List Updates**:\n  - UI updates are batched with layout suppression, eliminating visual stutter and speeding up card refreshes.\n- **Digital Fast-Path for Blank Page Checks**:\n  - Skips full raster image generation and OpenCV ink calculations on pages with confirmed digital text.\n- **Scroll Stability Improvements**:\n  - Page placeholders maintain dimensional stability when distant pixmaps are released, eliminating preview jumping."
       },
       "releases": [
+        {
+          "version": "v1.9.6",
+          "tag": "v1.9.6",
+          "name": "Lumeed QScan 1.9.6",
+          "published_at": "2026-11-03T05:07:40Z",
+          "file_size": "190.0 MB",
+          "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.9.6/LumeedQScan_Setup_1.9.6.exe",
+          "asset_name": "LumeedQScan_Setup_1.9.6.exe",
+          "sha256": "4d5f9fe57009afbb4b3f436a853b5c8e845c0bca1c58c10f887d0409d3bdcab6",
+          "changelog": "### Release 1.9.6 - System & Performance Optimizations\n\n#### Key Improvements:\n- **In-Memory File Hash Cache**:\n  - Eliminates repeated full-file disk reads and SHA-256 calculations when loading and navigating document pages.\n  - Disk I/O dropped to 0 on subsequent page views and cache checks.\n- **Lazy Output Folder Scanning**:\n  - Removed eager background output folder crawling at startup. Scans now only initiate on-demand when switching to the Reviewed tab or completing pipeline tasks.\n- **Preview Pixmap LRU Cache**:\n  - Caches rendered PDF page pixmaps in memory. Scrolling up and down through document pages is now instantaneous (0ms CPU re-rasterization).\n- **Non-Blocking Preview Candidate Extraction**:\n  - Digital text extraction runs instantly without triggering synchronous full-page pytesseract scans on the UI thread.\n- **Fast Card List Updates**:\n  - UI updates are batched with layout suppression, eliminating visual stutter and speeding up card refreshes.\n- **Digital Fast-Path for Blank Page Checks**:\n  - Skips full raster image generation and OpenCV ink calculations on pages with confirmed digital text.\n- **Scroll Stability Improvements**:\n  - Page placeholders maintain dimensional stability when distant pixmaps are released, eliminating preview jumping."
+        },
         {
           "version": "v1.9.5",
           "tag": "v1.9.5",
