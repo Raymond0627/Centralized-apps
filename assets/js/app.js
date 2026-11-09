@@ -74,6 +74,35 @@ var CATALOG = [
     ]
   },
   {
+    id: 'psplit',
+    name: 'Psplit',
+    tagline: 'Barcode-Driven PDF Splitting & Document Segmentation System',
+    type: 'desktop',
+    category: 'Windows Apps',
+    version: '1.1.0',
+    fileSize: '42.7 MB',
+    description: 'High-speed PDF splitter that scans multi-page documents for barcodes and QR codes entirely in memory, then slices them into separate lossless PDFs. Features native zxing-cpp + PyMuPDF decoding, parallel multi-core processing, configurable separator-page handling, and a modern CustomTkinter interface with built-in auto-update.',
+    featured: true,
+    icon: 'layers',
+    platform: 'Windows 10 / 11 (64-bit)',
+    ram: '4 GB minimum',
+    disk: '250 MB free disk space',
+    arch: 'x86-64 / x64 Architecture',
+    sha256: 'ce7e7ac611a5b00ae9d1b77959aaaae4b345892edd49efa3daf7dd6908dc367d',
+    downloadUrl: 'https://github.com/Raymond0627/Psplit/releases/download/v1.1.0/Lumeed_Psplit_Setup.exe',
+    fileName: 'Lumeed_Psplit_Setup.exe',
+    status: 'ready',
+    features: ['Barcode / QR Splitting', 'In-Memory Scan Engine', 'Auto-Update'],
+    changelog: [
+      { ver: 'v1.1.0', text: 'Header icons are now real vector images and no longer render as a question mark on Windows.' },
+      { ver: 'v1.1.0', text: 'Settings is an inline, non-modal panel, so switching Dark/Light/System can never freeze the app.' },
+      { ver: 'v1.1.0', text: 'Update arrow stays visible: grayscale when current, emerald green when an update is available.' },
+      { ver: 'v1.0.0', text: 'High-speed in-memory scanning with native C++ zxing-cpp and PyMuPDF — QR, Code 128, Code 39 and 1D barcodes, zero disk writes.' },
+      { ver: 'v1.0.0', text: 'Parallel multi-core analysis of multi-page scanned PDFs with lossless document slicing.' },
+      { ver: 'v1.0.0', text: 'Configurable separator-page handling, modern CustomTkinter GUI and built-in GitHub auto-update.' }
+    ]
+  },
+  {
     id: 'trueput',
     name: 'Trueput',
     tagline: 'Document Processing Throughput & Performance Dashboard',

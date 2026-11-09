@@ -213,13 +213,14 @@ Two helper scripts:
 
 ## 4. Releasing a New Version (Fully Automatic)
 
-Every time you release an update for **QScan** or **Pcount**, the portal picks up
-the new version, file size, download URL and changelog on its own.
+Every time you release an update for **QScan**, **Pcount** or **Psplit**, the
+portal picks up the new version, file size, download URL and changelog on its own.
 
 1. **Build the `.exe`** installer using your standard build script (PyInstaller / Inno Setup).
 2. Go to your repo on GitHub:
    - `https://github.com/Raymond0627/Automated-System/releases/new` (QScan)
    - `https://github.com/Raymond0627/Page-Counter/releases/new` (Pcount)
+   - `https://github.com/Raymond0627/Psplit/releases/new` (Psplit)
 3. Enter tag version: `v1.9.0` (semantic versioning).
 4. Write your changelog in the release description box — anything longer than
    40 characters is published on the portal verbatim.
@@ -251,7 +252,7 @@ points at the exact file for that release. (It deliberately does **not** use
 
 ### One-time setup for instant updates
 
-In **each** repo that publishes releases (QScan, Pcount):
+In **each** repo that publishes releases (QScan, Pcount, Psplit):
 
 1. Create a token with `repo` scope: <https://github.com/settings/tokens>
 2. **Settings → Secrets and variables → Actions → New repository secret**
@@ -278,8 +279,8 @@ git add data/apps.json && git commit -m "chore(data): sync releases"
 
 ## 5. Adding Future Python Web Apps (Phase 4)
 
-To add another hosted web tool (the current suite is **QScan**, **Pcount** and
-**Trueput**):
+To add another hosted web tool (the current suite is **QScan**, **Pcount**,
+**Psplit** and **Trueput**):
 
 1. Open `data/apps.json`.
 2. Locate the app entry under `"apps"`, or add a new object with
