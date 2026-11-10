@@ -6,7 +6,7 @@
     "description": "Unified access to Lumeed internal desktop systems, automated tools, and enterprise web applications.",
     "github_owner": "Raymond0627",
     "support_contact": "it@lumeed.internal",
-    "last_updated": "2026-11-10T01:23:02Z",
+    "last_updated": "2026-11-10T14:39:22Z",
     "brand_colors": {
       "primary": "#6C5CC8",
       "primary_hover": "#5848B8",
@@ -299,7 +299,7 @@
       "tagline": "Barcode-Driven PDF Splitting & Document Segmentation System",
       "description": "High-speed PDF splitter that scans multi-page documents for barcodes and QR codes entirely in memory, then slices them into separate lossless PDFs. Features native zxing-cpp + PyMuPDF decoding, parallel multi-core processing, configurable separator-page handling, and a modern CustomTkinter interface with built-in auto-update.",
       "repo": "Raymond0627/Psplit",
-      "asset_name": "Lumeed_Psplit_Setup.exe",
+      "asset_name": "Folio_Setup.exe",
       "category": "Document Processing",
       "icon": "layers",
       "platform": "Windows x64",
@@ -312,17 +312,28 @@
         "arch": "x86-64 / x64 Architecture"
       },
       "latest_release": {
-        "version": "v1.1.0",
-        "tag": "v1.1.0",
-        "name": "Lumeed Psplit v1.1.0",
-        "published_at": "2026-11-09T07:33:11Z",
+        "version": "v1.2.0",
+        "tag": "v1.2.0",
+        "name": "Folio v1.2.0",
+        "published_at": "2026-11-10T04:06:13Z",
         "file_size": "42.7 MB",
-        "download_url": "https://github.com/Raymond0627/Psplit/releases/download/v1.1.0/Lumeed_Psplit_Setup.exe",
-        "asset_name": "Lumeed_Psplit_Setup.exe",
+        "download_url": "https://github.com/Raymond0627/Psplit/releases/download/v1.2.0/Folio_Setup.exe",
+        "asset_name": "Folio_Setup.exe",
         "sha256": "ce7e7ac611a5b00ae9d1b77959aaaae4b345892edd49efa3daf7dd6908dc367d",
-        "changelog": "## Lumeed Psplit v1.1.0\n\n### Fixes\n- **Header icons fixed:** the down-arrow and gear settings icons are now real vector images, so they no longer render as a '?' on Windows.\n- **Settings no longer freezes the app:** Settings is now an inline, non-modal panel. Switching Dark/Light/System can never lock the UI, and the button stays clickable.\n- **Update dialog grab fix:** the update window no longer holds input capture after closing, so the main window remains fully responsive.\n\n### Improvements\n- Update arrow is always visible: **grayscale when up to date**, **emerald green when an update is available**.\n- Polished header with version badge and cleaner layout; all icons render crisply at any DPI.\n- Version now **1.1.0**.\n\n### Installation\nDownload and run **Lumeed_Psplit_Setup.exe** below."
+        "changelog": "## Folio v1.2.0 - Clean Minimalist UI Redesign\n\n### What's New\n- **Rebranded to Folio**: Clean title and interface, removed old logo mark for a pure minimalist header.\n- **Modern Minimalist UI Redesign**:\n  - Sky blue and crisp white rounded card layout.\n  - Soft pill-shaped inputs, buttons, and badges.\n  - Symmetrical 2-column rules panel with instant dropdowns.\n  - Illustrated document empty-state that seamlessly transitions to the live split log.\n  - Default theme set to **Light Mode** out of the box.\n- **Auto-Update Delivery**: Older versions (v1.0.0 and v1.1.0) automatically receive update notifications and can upgrade to Folio with a single click.\n\n### Installation\nDownload and run **Folio_Setup.exe** below to install or update."
       },
       "releases": [
+        {
+          "version": "v1.2.0",
+          "tag": "v1.2.0",
+          "name": "Folio v1.2.0",
+          "published_at": "2026-11-10T04:06:13Z",
+          "file_size": "42.7 MB",
+          "download_url": "https://github.com/Raymond0627/Psplit/releases/download/v1.2.0/Folio_Setup.exe",
+          "asset_name": "Folio_Setup.exe",
+          "sha256": "ce7e7ac611a5b00ae9d1b77959aaaae4b345892edd49efa3daf7dd6908dc367d",
+          "changelog": "## Folio v1.2.0 - Clean Minimalist UI Redesign\n\n### What's New\n- **Rebranded to Folio**: Clean title and interface, removed old logo mark for a pure minimalist header.\n- **Modern Minimalist UI Redesign**:\n  - Sky blue and crisp white rounded card layout.\n  - Soft pill-shaped inputs, buttons, and badges.\n  - Symmetrical 2-column rules panel with instant dropdowns.\n  - Illustrated document empty-state that seamlessly transitions to the live split log.\n  - Default theme set to **Light Mode** out of the box.\n- **Auto-Update Delivery**: Older versions (v1.0.0 and v1.1.0) automatically receive update notifications and can upgrade to Folio with a single click.\n\n### Installation\nDownload and run **Folio_Setup.exe** below to install or update."
+        },
         {
           "version": "v1.1.0",
           "tag": "v1.1.0",
