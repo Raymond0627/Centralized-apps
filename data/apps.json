@@ -6,7 +6,7 @@
     "description": "Unified access to Lumeed internal desktop systems, automated tools, and enterprise web applications.",
     "github_owner": "Raymond0627",
     "support_contact": "it@lumeed.internal",
-    "last_updated": "2026-11-26T07:46:35Z",
+    "last_updated": "2026-11-26T21:15:00Z",
     "brand_colors": {
       "primary": "#6C5CC8",
       "primary_hover": "#5848B8",
@@ -24,7 +24,7 @@
       "tagline": "Automated OCR Document Renaming & Date Extraction System",
       "description": "Automated date extraction and intelligent batch PDF renaming engine using high-performance OCR. Features blank page detection, dark-themed PyQt6 review interface, and standardized corporate taxonomy mapping.",
       "repo": "Raymond0627/Automated-System",
-      "asset_name": "LumeedQScan_Setup_1.10.1.exe",
+      "asset_name": "LumeedQScan_Setup_1.10.2.exe",
       "category": "Quality & Inspection",
       "icon": "ocr",
       "platform": "Windows x64",
@@ -37,17 +37,28 @@
         "arch": "x86-64 / x64 Architecture"
       },
       "latest_release": {
-        "version": "v1.10.1",
-        "tag": "v1.10.1",
-        "name": "Lumeed QScan 1.10.1",
-        "published_at": "2026-11-26T01:40:02Z",
+        "version": "v1.10.2",
+        "tag": "v1.10.2",
+        "name": "Lumeed QScan 1.10.2",
+        "published_at": "2026-11-26T08:01:09Z",
         "file_size": "190.1 MB",
-        "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.10.1/LumeedQScan_Setup_1.10.1.exe",
-        "asset_name": "LumeedQScan_Setup_1.10.1.exe",
+        "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.10.2/LumeedQScan_Setup_1.10.2.exe",
+        "asset_name": "LumeedQScan_Setup_1.10.2.exe",
         "sha256": "4d5f9fe57009afbb4b3f436a853b5c8e845c0bca1c58c10f887d0409d3bdcab6",
-        "changelog": "## Faster page validation\n\n- **Rotate, Flip, Enhance** now refresh only the edited page instead of rebuilding the entire document preview. The white gap/freeze is gone.\n- **Mark as Blank / Remove Mark** no longer re-renders the PDF or the preview. Only the affected page is updated, including its BLANK badge and border.\n- **Undo** for rotation and blank marks is now lightweight and no longer serializes the whole PDF.\n- Page image caching is per-page, and full rebuilds (delete/insert/sort) reuse cached pages so they no longer flash white.\n\nTypical result on a 17-page document:\n- Rotate page: ~3 seconds \u2192 **under 200 ms**\n- Mark blank: ~3 seconds \u2192 **around 100 ms**\n\n## Notes\n\n- 197 automated tests pass.\n- This is the update for PCs still on 1.10.0 that still show the slow full-preview refresh.\n- Existing settings, sessions and output folders are preserved.\n\n## Install\n\nDownload `LumeedQScan_Setup_1.10.1.exe` and run it. The app will also offer this update automatically on next launch."
+        "changelog": "## New: in-app update indicator\n\n- Added a minimal update icon in the Dashboard header, next to the IDLE status pill.\n- **Dark/black** when up to date.\n- **Red** when a newer version is available.\n- Hover shows the version, e.g. `Update v1.10.3 available \u2014 click to install`.\n- Click the red icon to open the download/install dialog.\n- Click the dark icon to check again; the status bar confirms you are up to date.\n- The old automatic update popup on startup is replaced by this icon.\n- **Settings \u2192 Check for Updates** now syncs the same indicator.\n\n## Also included\n\n- All 1.10.1 page-validation speed fixes: rotate/blank updates only the edited page, with no white flash and lightweight undo.\n- 199 automated tests pass.\n\n## Install\n\nDownload `LumeedQScan_Setup_1.10.2.exe` and run it. Existing settings, sessions and output folders are preserved."
       },
       "releases": [
+        {
+          "version": "v1.10.2",
+          "tag": "v1.10.2",
+          "name": "Lumeed QScan 1.10.2",
+          "published_at": "2026-11-26T08:01:09Z",
+          "file_size": "190.1 MB",
+          "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.10.2/LumeedQScan_Setup_1.10.2.exe",
+          "asset_name": "LumeedQScan_Setup_1.10.2.exe",
+          "sha256": "4d5f9fe57009afbb4b3f436a853b5c8e845c0bca1c58c10f887d0409d3bdcab6",
+          "changelog": "## New: in-app update indicator\n\n- Added a minimal update icon in the Dashboard header, next to the IDLE status pill.\n- **Dark/black** when up to date.\n- **Red** when a newer version is available.\n- Hover shows the version, e.g. `Update v1.10.3 available \u2014 click to install`.\n- Click the red icon to open the download/install dialog.\n- Click the dark icon to check again; the status bar confirms you are up to date.\n- The old automatic update popup on startup is replaced by this icon.\n- **Settings \u2192 Check for Updates** now syncs the same indicator.\n\n## Also included\n\n- All 1.10.1 page-validation speed fixes: rotate/blank updates only the edited page, with no white flash and lightweight undo.\n- 199 automated tests pass.\n\n## Install\n\nDownload `LumeedQScan_Setup_1.10.2.exe` and run it. Existing settings, sessions and output folders are preserved."
+        },
         {
           "version": "v1.10.1",
           "tag": "v1.10.1",
