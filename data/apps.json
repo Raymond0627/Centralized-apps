@@ -6,7 +6,7 @@
     "description": "Unified access to Lumeed internal desktop systems, automated tools, and enterprise web applications.",
     "github_owner": "Raymond0627",
     "support_contact": "it@lumeed.internal",
-    "last_updated": "2026-11-25T21:28:06Z",
+    "last_updated": "2026-11-26T07:46:35Z",
     "brand_colors": {
       "primary": "#6C5CC8",
       "primary_hover": "#5848B8",
@@ -24,7 +24,7 @@
       "tagline": "Automated OCR Document Renaming & Date Extraction System",
       "description": "Automated date extraction and intelligent batch PDF renaming engine using high-performance OCR. Features blank page detection, dark-themed PyQt6 review interface, and standardized corporate taxonomy mapping.",
       "repo": "Raymond0627/Automated-System",
-      "asset_name": "LumeedQScan_Setup_1.9.9.exe",
+      "asset_name": "LumeedQScan_Setup_1.10.1.exe",
       "category": "Quality & Inspection",
       "icon": "ocr",
       "platform": "Windows x64",
@@ -37,17 +37,39 @@
         "arch": "x86-64 / x64 Architecture"
       },
       "latest_release": {
-        "version": "v1.9.9",
-        "tag": "v1.9.9",
-        "name": "Lumeed QScan 1.9.9",
-        "published_at": "2026-11-25T06:34:35Z",
+        "version": "v1.10.1",
+        "tag": "v1.10.1",
+        "name": "Lumeed QScan 1.10.1",
+        "published_at": "2026-11-26T01:40:02Z",
         "file_size": "190.1 MB",
-        "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.9.9/LumeedQScan_Setup_1.9.9.exe",
-        "asset_name": "LumeedQScan_Setup_1.9.9.exe",
+        "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.10.1/LumeedQScan_Setup_1.10.1.exe",
+        "asset_name": "LumeedQScan_Setup_1.10.1.exe",
         "sha256": "4d5f9fe57009afbb4b3f436a853b5c8e845c0bca1c58c10f887d0409d3bdcab6",
-        "changelog": "## Single-document stall fix\n\n- A document that stops making progress now times out after **5 minutes of no activity** and is marked as an error in the Activity Stream instead of freezing the whole folder. The remaining PDFs continue processing immediately.\n- This covers stuck network copies, unreadable/corrupt PDFs, and OCR that never returns.\n- The Activity Stream shows the skipped file, for example:\n  `[ERROR] 0002_025_REPD_part_004.pdf: no progress for 300s - skipped. Check the file or network share.`\n\n## Much faster scanned documents\n\n- When **Document date in filename** is off (the default), OCR text is now collected for the first few pages only instead of every page. This was the main reason single scanned parts took minutes. Blank-page detection still runs on every page.\n- A 90-part scanned folder that previously showed an ~80-minute ETA now processes substantially faster.\n- The live status bar now shows `filename - page x/y` while a document is being scanned, instead of only `Processing x/y (working...)`.\n\n## Review window (from 1.9.8)\n\n- The review window is scoped to the current scan; documents left over from a previous folder/session can no longer block a small 2-6 PDF run.\n- Paused runs expose **Start New Run** to cancel and switch folders.\n- Old/cancelled runs can no longer inject documents into a new run.\n\n## Notes\n\n- If a document is skipped by the watchdog, it still appears in the run results as an error. Fix/replace the file and use Resume or a new Run to retry it.\n- 187 automated tests pass.\n\n## Install\n\nDownload `LumeedQScan_Setup_1.9.9.exe` and run it. Existing configurations, sessions and output folders are preserved."
+        "changelog": "## Faster page validation\n\n- **Rotate, Flip, Enhance** now refresh only the edited page instead of rebuilding the entire document preview. The white gap/freeze is gone.\n- **Mark as Blank / Remove Mark** no longer re-renders the PDF or the preview. Only the affected page is updated, including its BLANK badge and border.\n- **Undo** for rotation and blank marks is now lightweight and no longer serializes the whole PDF.\n- Page image caching is per-page, and full rebuilds (delete/insert/sort) reuse cached pages so they no longer flash white.\n\nTypical result on a 17-page document:\n- Rotate page: ~3 seconds \u2192 **under 200 ms**\n- Mark blank: ~3 seconds \u2192 **around 100 ms**\n\n## Notes\n\n- 197 automated tests pass.\n- This is the update for PCs still on 1.10.0 that still show the slow full-preview refresh.\n- Existing settings, sessions and output folders are preserved.\n\n## Install\n\nDownload `LumeedQScan_Setup_1.10.1.exe` and run it. The app will also offer this update automatically on next launch."
       },
       "releases": [
+        {
+          "version": "v1.10.1",
+          "tag": "v1.10.1",
+          "name": "Lumeed QScan 1.10.1",
+          "published_at": "2026-11-26T01:40:02Z",
+          "file_size": "190.1 MB",
+          "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.10.1/LumeedQScan_Setup_1.10.1.exe",
+          "asset_name": "LumeedQScan_Setup_1.10.1.exe",
+          "sha256": "4d5f9fe57009afbb4b3f436a853b5c8e845c0bca1c58c10f887d0409d3bdcab6",
+          "changelog": "## Faster page validation\n\n- **Rotate, Flip, Enhance** now refresh only the edited page instead of rebuilding the entire document preview. The white gap/freeze is gone.\n- **Mark as Blank / Remove Mark** no longer re-renders the PDF or the preview. Only the affected page is updated, including its BLANK badge and border.\n- **Undo** for rotation and blank marks is now lightweight and no longer serializes the whole PDF.\n- Page image caching is per-page, and full rebuilds (delete/insert/sort) reuse cached pages so they no longer flash white.\n\nTypical result on a 17-page document:\n- Rotate page: ~3 seconds \u2192 **under 200 ms**\n- Mark blank: ~3 seconds \u2192 **around 100 ms**\n\n## Notes\n\n- 197 automated tests pass.\n- This is the update for PCs still on 1.10.0 that still show the slow full-preview refresh.\n- Existing settings, sessions and output folders are preserved.\n\n## Install\n\nDownload `LumeedQScan_Setup_1.10.1.exe` and run it. The app will also offer this update automatically on next launch."
+        },
+        {
+          "version": "v1.10.0",
+          "tag": "v1.10.0",
+          "name": "Lumeed QScan 1.10.0",
+          "published_at": "2026-11-26T01:02:49Z",
+          "file_size": "190.1 MB",
+          "download_url": "https://github.com/Raymond0627/Automated-System/releases/download/v1.10.0/LumeedQScan_Setup_1.10.0.exe",
+          "asset_name": "LumeedQScan_Setup_1.10.0.exe",
+          "sha256": "4d5f9fe57009afbb4b3f436a853b5c8e845c0bca1c58c10f887d0409d3bdcab6",
+          "changelog": "## New: one Leverage setting\n\n- Replaced the two **Review Window** and **Refill At** controls with a single **Leverage** setting.\n- Leverage range: **20 to 100 documents** (default 50).\n- Refill is now fixed at **10 documents**.\n\n### How it works\n\n- Choose Leverage = **20**: processing pauses when 20 documents are waiting in the Review tab, then resumes when the queue drops to 10 and refills back to 20.\n- Choose Leverage = **30**: the same cycle pauses at 30 and refills at 10 back up to 30.\n- This repeats until the whole folder is processed.\n\n### Saves and applies automatically\n\n- Changing Leverage saves immediately \u2014 no need to click **Save Settings**.\n- The new value applies **live during an active scan**:\n  - Increase it to let processing continue/refill sooner.\n  - Decrease it to pause sooner; normal refill still happens at 10.\n- Existing configs are migrated: values below 20 become 20, values above 100 become 100.\n\n## Also included\n\n- All 1.9.9 fixes: per-document stall watchdog, faster date-off OCR, and live page progress.\n- 195 automated tests pass.\n\n## Install\n\nDownload `LumeedQScan_Setup_1.10.0.exe` and run it. Existing configurations, sessions and output folders are preserved."
+        },
         {
           "version": "v1.9.9",
           "tag": "v1.9.9",
